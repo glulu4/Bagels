@@ -20,7 +20,7 @@ db.init_app(app) # instead of passing 'app' to db = SQLAlchemy(app) in model.py
 
 CORS(app, origins=["http://localhost:3000","https://bagel-app-11c1ad484767.herokuapp.com, ""https://localhost:3000", "http://127.0.0.1:3000", "http://10.0.0.153:3000", "http://10.1.10.153:5001"]) # third is for mobile 10.0.0.153:3000
 
-stripe.api_key = 'sk_test_51NBJW4Ih7LOkeOi8jC2T7lkoKaNZSJS8xGo11eWEIPhGgePTjl6AmuRLG542C9rCqXAA9R7KZjCftRXsGDkf8gxu00V1urdUch'
+# stripe.api_key = 'sk_test_51NBJW4Ih7LOkeOi8jC2T7lkoKaNZSJS8xGo11eWEIPhGgePTjl6AmuRLG542C9rCqXAA9R7KZjCftRXsGDkf8gxu00V1urdUch'
 @app.cli.command('initdb')
 def initdb_command():
     db.drop_all()
@@ -103,12 +103,12 @@ def delete_order(_id):
 # gets client publishable api key thingy 
 @app.route("/config", methods=["GET"])
 def get_api_key():
-    api_key = {
-        "publishableKey" : 'pk_test_51NBJW4Ih7LOkeOi8v3t3IHufZD2TOIZm3GDA1py22lrZxGR3ALnAEFmBqXgtFasg5JQd8MTTvbkrtdPd5p73H88Y00KezH5ItL'
-    }
     # api_key = {
-    #     "publishableKey" : 'pk_live_51NCkM8I8OaFVzBusmOLBipTXzwTwwExOcfrsGelxGVY3L8AkEeAvQ7AKiXcr9CH3uMrcbnsJXj5ewcTowYL5Uuz200kTG7OH9c'
+    #     "publishableKey" : 'pk_test_51NBJW4Ih7LOkeOi8v3t3IHufZD2TOIZm3GDA1py22lrZxGR3ALnAEFmBqXgtFasg5JQd8MTTvbkrtdPd5p73H88Y00KezH5ItL'
     # }
+    api_key = {
+        "publishableKey" : 'pk_live_51NCkM8I8OaFVzBusmOLBipTXzwTwwExOcfrsGelxGVY3L8AkEeAvQ7AKiXcr9CH3uMrcbnsJXj5ewcTowYL5Uuz200kTG7OH9c'
+    }
     return api_key
 
 # gets client secret jawn

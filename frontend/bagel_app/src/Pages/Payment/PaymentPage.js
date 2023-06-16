@@ -33,6 +33,7 @@ function PaymentPage() {
 
     // "http://127.0.0.1:5001/config"
     const backendAddress = 'https://bagel-app-11c1ad484767.herokuapp.com'
+    
 
     useEffect(() => {
         const fetchData = async () => {

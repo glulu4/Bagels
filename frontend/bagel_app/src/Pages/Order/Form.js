@@ -31,20 +31,57 @@ function Form({ handleFormButtonSubmit, props } ) {
     
     // runs whenever any bagel amount is updated
     useEffect(() =>  {
-        const numBagels = parseInt(numPlain) + parseInt(numSeseme) + parseInt(numEv) + parseInt(numPoppy) + parseInt(numCinSug);
-        
-        if ( isNaN(numBagels) ){
-            setNumBagels(0)
-        }
 
-        setNumBagels(numBagels)
+
+        // if (isNaN(parseInt(numPlain)))
+        //     setNumPlain(0)
+        
+        // if (isNaN(parseInt(numSeseme)))
+        //     setNumPlain(0)
+        
+        // if (isNaN(parseInt(numEv)))
+        //     setNumPlain(0)
+
+        // if (isNaN(parseInt(numPoppy)))
+        //     setNumPlain(0)
+
+        // if (isNaN(parseInt(numCinSug)))
+        //     setNumPlain(0)
+            
+        // const numBagels = parseInt(numPlain) + parseInt(numSeseme) + parseInt(numEv) + parseInt(numPoppy) + parseInt(numCinSug);
+        // setNumBagels(numBagels)
+
+        let parsedNumPlain = parseInt(numPlain);
+        let parsedNumSeseme = parseInt(numSeseme);
+        let parsedNumEv = parseInt(numEv);
+        let parsedNumPoppy = parseInt(numPoppy);
+        let parsedNumCinSug = parseInt(numCinSug);
+
+        if (isNaN(parsedNumPlain))
+            parsedNumPlain = 0;
+
+        if (isNaN(parsedNumSeseme))
+            parsedNumSeseme = 0;
+
+        if (isNaN(parsedNumEv))
+            parsedNumEv = 0;
+
+        if (isNaN(parsedNumPoppy))
+            parsedNumPoppy = 0;
+
+        if (isNaN(parsedNumCinSug))
+            parsedNumCinSug = 0;
+
+        const numBagels = parsedNumPlain + parsedNumSeseme + parsedNumEv + parsedNumPoppy + parsedNumCinSug;
+        setNumBagels(numBagels);
+
 
         let groupsOfThree = Math.floor(numBagels / 3);
         let remainder = numBagels % 3;
 
         cost = (groupsOfThree * 5) + (remainder * 2);
-        if (typeof(cost) === NaN) {
-            numBagels = 0
+        if (isNaN(cost)) {
+            setNumBagels(0)
         }
         setCost(cost);
 
