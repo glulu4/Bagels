@@ -263,17 +263,16 @@ def send_orders():
     email_orders(last_weeks_orders)
     return make_response("Emails ordered", 201)
 
-# def schedule_email_orders():
-#     schedule.every().thursday.at('14:55').do(send_orders)
 
-#     while True:
-#         schedule.run_pending()
-#         time.sleep(1)
     
 
 
 
     
+
+
+if __name__ == '__main__':
+    app.run()
 
     
 
