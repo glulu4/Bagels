@@ -36,6 +36,8 @@ function Payment(props){
     const [isLoading, setIsLoading] = useState(false);
     const [paymentID, setPaymentID] = useState(null);
 
+    const backendAddress = 'https://bagel-app-11c1ad484767.herokuapp.com'
+
 
     const buttonStyle = {
         fontSize: 15,
@@ -63,7 +65,7 @@ function Payment(props){
 
     const submitOrder = (event) => {
         event.preventDefault();
-        fetch("http://127.0.0.1:5001/order/", {
+        fetch(`${backendAddress}/order/`, {
             method: "post",
             // mode: 'no-cors',
             headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
@@ -145,10 +147,7 @@ function Payment(props){
 
 
         // if im accessing it from mobile
-        let address = "http://localhost:3000"
-        if (isMobile){
-            address = "http://10.0.0.153:3000" // the nextwork one, for testing use
-        }
+
     
 
         

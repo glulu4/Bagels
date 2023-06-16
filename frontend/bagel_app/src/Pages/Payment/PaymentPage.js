@@ -32,21 +32,23 @@ function PaymentPage() {
 
 
     // "http://127.0.0.1:5001/config"
+    const backendAddress = 'https://bagel-app-11c1ad484767.herokuapp.com'
+
     useEffect(() => {
         const fetchData = async () => {
             try {
 
-                let address = "http://127.0.0.1:5001"
+                // let address = "http://127.0.0.1:5001"
 
-                if (isMobile) {
-                    address = "http://10.0.0.153:5001" // the nextwork one, for testing use 
-                    console.log("on mobile");
-                    console.log(address);
-                }
+                // if (isMobile) {
+                //     address = "http://10.0.0.153:5001" // the nextwork one, for testing use 
+                //     console.log("on mobile");
+                //     console.log(address);
+                // }
 
                 // let publishableKey = null;
 
-                const configResponse = await fetch(`${address}/config`);
+                const configResponse = await fetch(`${backendAddress}/config`);
                 const { publishableKey } = await configResponse.json();
 
                 console.log("publishableKey",publishableKey);
@@ -58,7 +60,7 @@ function PaymentPage() {
 
                 setPublishableKey(publishableKey);
 
-                const paymentIntentResponse = await fetch(`${address}/create-payment-intent/`, {
+                const paymentIntentResponse = await fetch(`${backendAddress}/create-payment-intent/`, {
                     method: "post",
                     headers: { "Content-Type": "application/json; charset=UTF-8" },
                     body: JSON.stringify({

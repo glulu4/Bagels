@@ -29,28 +29,28 @@ function Timer() {
             // timeUntilMonday = 0;  
 
 
-            if ( timeUntilMonday <= 0 ){
+            // if ( timeUntilMonday <= 0 ){
 
-                fetch("http://127.0.0.1:5001/send-orders", {
-                    method: "post",
-                    headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
-                    body: JSON.stringify({}),
-                })
-                .then( (response) => {
-                    if ( response.ok ){
-                        return response.json()
-                    }
-                    else{
-                        throw new Error("Error: " + response.status);
-                    }
-                })
-                .then( (data) => {
-                    console.log(data);
-                })
-                .catch((error) => {
-                    console.error(error);
-                })
-            }
+            //     fetch("http://127.0.0.1:5001/send-orders", {
+            //         method: "post",
+            //         headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
+            //         body: JSON.stringify({}),
+            //     })
+            //     .then( (response) => {
+            //         if ( response.ok ){
+            //             return response.json()
+            //         }
+            //         else{
+            //             throw new Error("Error: " + response.status);
+            //         }
+            //     })
+            //     .then( (data) => {
+            //         console.log(data);
+            //     })
+            //     .catch((error) => {
+            //         console.error(error);
+            //     })
+            // }
 
         }, 1000);
 

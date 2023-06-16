@@ -18,7 +18,7 @@ app.secret_key = "this is a terrible secret key" # for sessions
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bagel.db' 
 db.init_app(app) # instead of passing 'app' to db = SQLAlchemy(app) in model.py
 
-CORS(app, origins=["http://localhost:3000","https://localhost:3000", "http://127.0.0.1:3000", "http://10.0.0.153:3000", "http://10.1.10.153:5001"]) # third is for mobile 10.0.0.153:3000
+CORS(app, origins=["http://localhost:3000","https://bagel-app-11c1ad484767.herokuapp.com, ""https://localhost:3000", "http://127.0.0.1:3000", "http://10.0.0.153:3000", "http://10.1.10.153:5001"]) # third is for mobile 10.0.0.153:3000
 
 stripe.api_key = 'sk_test_51NBJW4Ih7LOkeOi8jC2T7lkoKaNZSJS8xGo11eWEIPhGgePTjl6AmuRLG542C9rCqXAA9R7KZjCftRXsGDkf8gxu00V1urdUch'
 @app.cli.command('initdb')
