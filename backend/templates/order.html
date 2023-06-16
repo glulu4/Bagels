@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %} About {% endblock %}
+
+
+{% block body %}
+<div id="order-form">
+
+    <h3 id="order-header">Place An Order</h3>
+
+    <div id="inner-div">
+        <form action="" method="POST">
+            <div style="padding-bottom:10px">
+                Name: <input type="text" name="name" required style="padding-block:2px" />
+                <br>
+            </div>
+
+            <div style="padding-bottom:6px">
+                <label for="dropdown">Bagel Type: </label>
+                <select id="dropdown" name="bageltype" style="padding-block:3px">
+                    <option value="plain">Plain</option>
+
+                    <option value="sesame">Sesame</option>
+
+                    <option value="everything">Everything</option>
+                </select>
+                <br>
+
+            </div>
+
+            <div style="padding-bottom:6px;">
+                Dozen: <input type="number" name="dozen" value="" min="0" max="50" step="1" required>
+                <br>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="button" type="submit">Submit</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+{% endblock %}

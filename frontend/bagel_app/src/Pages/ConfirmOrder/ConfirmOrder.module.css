@@ -1,0 +1,82 @@
+.recieptDiv {
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    /* background-color: darksalmon; */
+    /* background-color: rgba(51, 51, 51, 0.05); */
+    /* background-color:#C38d9E; */
+    /* background-color: #e98074; */
+    background-color: whitesmoke;
+    width: 30%;
+    font-style: bold;
+
+    /* Set a background color for the div */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 80px auto;
+    /* Adjust the margin-top to move it down */
+    border-radius: 10px;
+    /* Add this line to round the corners */
+
+}
+
+table{
+    margin:20px;
+}
+
+.heading{
+    background-color: #c7c2c2;
+    margin:10px;
+    width:fit-content;
+    border-radius:10px;
+}
+
+
+
+.quantityCell{
+    text-align: right;
+    padding-right: 10px;
+}
+
+
+.title{
+    text-align:center;
+    padding-top:5%
+}
+
+
+
+
+
+@media screen and ( max-width:800px ){
+    .recieptDiv {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-color: whitesmoke;
+            width: 85%;
+            font-style: bold;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin: 80px auto;
+            border-radius: 10px;
+        }
+    
+
+    
+        .heading {
+            background-color: #c7c2c2;
+        }
+    
+        .quantityCell {
+            text-align: right;
+            padding-right: 5%;
+        }
+        .total{
+            padding-right: 105%;
+            text-align: center;
+        }
+     
+
+        table {
+            margin: 20px;
+        }
+}

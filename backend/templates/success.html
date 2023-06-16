@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+
+{% block title %} Sam's Bagels - Success! {% endblock %}
+
+{% block body %}
+        <h1>Success, you're order has been confirmed</h1>
+        <button class="button"><a href="{{url_for("home_page")}}">Home</a></button> 
+{% endblock %}

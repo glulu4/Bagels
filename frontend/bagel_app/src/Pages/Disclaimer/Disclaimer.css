@@ -1,0 +1,22 @@
+
+.messageStyle {
+    text-align: center;
+    font-size: xx-large;
+    margin-top: 2%;
+}
+
+
+
+
+@media ( max-width: 800px ){
+.messageStyle{
+    font-size: medium;
+    
+}
+.h2Style{
+    font-size:3rem;
+    margin:auto;
+}
+
+
+}

@@ -1,0 +1,61 @@
+
+
+/* .StripeElement{
+    background-color:whitesmoke;
+} */
+.outerDiv{
+    display: flex;
+        justify-content: center;
+        /* Horizontal centering */
+        align-items: center;
+        /* Vertical centering */
+        /* Adjust this as needed */
+        margin-top: 5%;
+        padding-bottom: 5%;
+        
+}
+.payDiv{
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    background-color: whitesmoke;
+    
+    width:60%;
+    height:60;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+.payForm{
+    text-align:center;
+    margin:40px
+}
+
+#button{
+        display: flex;
+            justify-content: center;
+}
+
+
+@media (max-width: 800px){
+    .payDiv {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            background-color: whitesmoke;
+    
+            width: 80%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+        }
+        .outerDiv {
+            display: flex;
+            justify-content: center;
+            /* Horizontal centering */
+            align-items: center;
+            /* Vertical centering */
+            /* Adjust this as needed */
+            margin-bottom: 5%;
+
+        }
+}

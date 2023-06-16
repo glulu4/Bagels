@@ -1,0 +1,69 @@
+#timelabel {
+    font-size: 3rem;
+    text-align: center;
+    padding-bottom: 30px;
+    
+}
+
+
+.timersection {
+    min-height: 30vh;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: center
+}
+
+.countdown {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 40px;
+    text-align: center;
+
+    padding-right: 52px;
+}
+
+@media screen and (max-width: 768px) {
+    #timelabel {
+        font-size: 500%;
+        text-align:left;
+        padding-top:7%;
+        padding-left:0%;
+        margin: 0%;/* Add this line to center the element horizontally */
+    }
+
+    .timersection {
+        display:flex;
+                justify-content: center;
+        font-size: xx-small;
+        
+        
+        
+    }
+
+    .countdown {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0px;
+        margin-top:-30px;
+        font-size: xx-small;
+        
+    }
+
+    h3 {
+        font-size: xx-small;
+    }
+  .secDiv,
+  .dayDiv,
+  .minDiv,
+  .hourDiv {
+      /* display: flex;
+      flex-direction: row; */
+    margin-top: -10px;
+    /* margin-bottom: -10px; */
+  }
+
+
+}

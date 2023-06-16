@@ -1,0 +1,9 @@
+Good Morning Sam. Here are the Orders
+
+Total Bagels: 0
+Total Plain: 0
+Total Seseme: 0
+Total Everything: 0
+Total Poppy Seed: 0
+Total Cinnamon Sugar: 0
+Revenue this week: $0
