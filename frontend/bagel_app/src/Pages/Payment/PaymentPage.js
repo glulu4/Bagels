@@ -47,7 +47,6 @@ function PaymentPage() {
                 //     console.log(address);
                 // }
 
-                // let publishableKey = null;
 
                 const configResponse = await fetch(`${backendAddress}/config`);
                 const { publishableKey } = await configResponse.json();

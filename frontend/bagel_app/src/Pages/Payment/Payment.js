@@ -65,6 +65,17 @@ function Payment(props){
 
     const submitOrder = (event) => {
         event.preventDefault();
+
+
+        // let address = "http://127.0.0.1:5001"
+
+        // if (isMobile) {
+        //     address = "http://10.0.0.153:5001" // the nextwork one, for testing use 
+        //     console.log("on mobile");
+        //     console.log(address);
+        // }
+
+
         fetch(`${backendAddress}/order/`, {
             method: "post",
             // mode: 'no-cors',
