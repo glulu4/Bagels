@@ -108,7 +108,6 @@ def delete_order(_id):
 # gets client publishable api key thingy 
 @app.route("/config", methods=["GET"])
 def get_api_key():
-    print(os.getenv('STRIPE_API_KEY'))
     # api_key = {
     #     "publishableKey" : 'pk_test_51NBJW4Ih7LOkeOi8v3t3IHufZD2TOIZm3GDA1py22lrZxGR3ALnAEFmBqXgtFasg5JQd8MTTvbkrtdPd5p73H88Y00KezH5ItL'
     # }
