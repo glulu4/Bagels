@@ -15,7 +15,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-app.secret_key = "this is a terrible secret key" # for sessions
+app.secret_key = os.getenv("SESSION_KEY") # for sessions
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bagel.db' 
 db.init_app(app) # instead of passing 'app' to db = SQLAlchemy(app) in model.py
 
