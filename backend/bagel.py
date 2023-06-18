@@ -9,7 +9,8 @@ from datetime import datetime, timedelta
 import schedule
 import time
 
-
+from dotenv import load_dotenv
+load_dotenv()
 
 
 app = Flask(__name__)
@@ -20,7 +21,8 @@ db.init_app(app) # instead of passing 'app' to db = SQLAlchemy(app) in model.py
 
 CORS(app, origins=["http://localhost:3000","https://bagel-app-11c1ad484767.herokuapp.com, ""https://localhost:3000", "http://127.0.0.1:3000", "http://10.0.0.153:3000", "http://10.1.10.153:5001"]) # third is for mobile 10.0.0.153:3000
 
-stripe.api_key = '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'
+stripe.api_key = os.getenv('STRIPE_API_KEY')
+
 @app.cli.command('initdb')
 def initdb_command():
     db.drop_all()
