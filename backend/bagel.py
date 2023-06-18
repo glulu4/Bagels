@@ -15,7 +15,7 @@ load_dotenv()
 
 
 
-app = Flask(__name__)
+app = Flask( __name__ )
 
 app.secret_key = os.getenv("SESSION_KEY") # for sessions
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bagel.db' 
@@ -23,7 +23,8 @@ db.init_app(app) # instead of passing 'app' to db = SQLAlchemy(app) in model.py
 
 CORS(app, origins=["http://localhost:3000","https://bagel-app-11c1ad484767.herokuapp.com, ""https://localhost:3000", "http://127.0.0.1:3000", "http://10.0.0.153:3000", "http://10.1.10.153:5001"]) # third is for mobile 10.0.0.153:3000
 
-stripe.api_key = os.getenv('STRIPE_API_KEY')
+key = os.environ['STRIPE_API_KEY']
+stripe.api_key = os.getenv(key)
 
 @app.cli.command('initdb')
 def initdb_command():
@@ -107,6 +108,7 @@ def delete_order(_id):
 # gets client publishable api key thingy 
 @app.route("/config", methods=["GET"])
 def get_api_key():
+    print(os.getenv('STRIPE_API_KEY'))
     # api_key = {
     #     "publishableKey" : 'pk_test_51NBJW4Ih7LOkeOi8v3t3IHufZD2TOIZm3GDA1py22lrZxGR3ALnAEFmBqXgtFasg5JQd8MTTvbkrtdPd5p73H88Y00KezH5ItL'
     # }
