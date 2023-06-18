@@ -4,41 +4,8 @@ import './Disclaimer.css'
 
 
 function Disclaimer() {
-    const h2Style = {
-        textAlign: 'center',
-        marginTop: '5%',
-    }
-    const innerDivStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-        flexDirection: 'column',
-    }
-    // const messageStyle = {
-    //     textAlign: 'center',
-    //     fontSize: 'xx-large',
-    //     marginTop: '2%'
-    // }
-    const contactStyle = {
-        textAlign: 'center',
-        marginTop: '2%'
-    }
-    const bigDivStyle = {
 
-        backgroundColor: 'whitesmoke',
-        width:"100%",
-        borderRadius: 10,
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
-          
-    }
-    const buttonDivStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-        margin:"5%"
-    }
-    const buttonStyle = {
-        fontSize: 15,
-        fontWeight: 'bold'
-    }
+
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -82,17 +49,23 @@ function Disclaimer() {
            
             
         }}>
-            <div style={bigDivStyle} className='bigDivStyle'>
-                <h2 style={h2Style} className='h2Style'>Disclaimer</h2>
+            <div  className='bigDivStyle'>
+                <h2  className='h2Style'>Disclaimer</h2>
+                
 
-                <div style={innerDivStyle} className='innerDivStyle'>
-                    <p className='messageStyle'>These bagels were baked in a <strong><i>meat</i></strong>  oven</p>
-                    <p style={contactStyle} className='contactStyle'>If you have any questions please contact</p>
+                <div  className='innerDivStyle'>
+                    <p className='messageStyle'>These bagels were baked in a <strong><i>meat</i></strong> oven </p>
+
+                    <p className='messageStyle'>Parve oven coming soon</p>
+                    <br/>
+
+                    <p  className='contactStyle'>If you have any questions please contact Rabbi Shmueli Rothstein</p>
+                    <p  className='contactStyle'>443-525-4212 | glulu4444@gmail.com</p>
 
                 </div>
 
-                <div style={buttonDivStyle} className='buttonDivStyle'>
-                    <button className='buttonStyle' style={buttonStyle} onClick={handleClick}>Order</button>
+                <div  className='buttonDivStyle'>
+                    <button className='buttonStyle' onClick={handleClick}>Order</button>
              
                 </div>
             </div>

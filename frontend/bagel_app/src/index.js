@@ -29,7 +29,7 @@ const timer = setInterval(() => {
 
   if (timeUntilMonday <= 0) {
 
-    fetch("http://127.0.0.1:5001/send-orders", {
+    fetch("https://bagel-app-11c1ad484767.herokuapp.com/send-orders", {
       method: "post",
       headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
       body: JSON.stringify({}),

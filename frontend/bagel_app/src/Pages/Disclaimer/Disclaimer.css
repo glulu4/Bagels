@@ -1,7 +1,45 @@
 
 .messageStyle {
     text-align: center;
-    font-size: xx-large;
+    font-size: x-large;
+    margin-top: 2%;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 5%;
+    padding-bottom:2%
+}
+
+.innerDivStyle{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.contactStyle {
+    text-align: center;
+    margin-top: 2%;
+    font-weight: 100;
+    font-size:large;
+}
+
+.bigDivStyle {
+    background-color: whitesmoke;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.buttonDivStyle {
+    display: flex;
+    justify-content: center;
+    margin: 5%;
+}
+
+.buttonStyle {
+    font-size: 15px;
+    font-weight: bold;
     margin-top: 2%;
 }
 
@@ -9,14 +47,29 @@
 
 
 @media ( max-width: 800px ){
+
+.bigDivStyle{
+    padding:13%
+}
+.innerDivStyle{
+    padding-top:10%
+}
+
 .messageStyle{
-    font-size: medium;
+    font-size: 20px;
+    font-weight:400;
+    margin-top: 2%;
     
 }
 .h2Style{
     font-size:3rem;
     margin:auto;
 }
+.contactStyle{
+    padding-top:5%;
+    font-size: medium;
+}
+
 
 
 }

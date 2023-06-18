@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 key = os.environ.get('STRIPE_API_KEY')
-# above works on heroku, locally do os.getenv("STRIPE_API_KEY")
+
 stripe.api_key = key
 
 app = Flask( __name__ )
