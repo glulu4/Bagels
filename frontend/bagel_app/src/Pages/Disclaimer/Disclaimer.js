@@ -9,6 +9,21 @@ function Disclaimer() {
 
     const navigate = useNavigate();
     const location = useLocation();
+    const buttonStyle = {
+        fontSize: 15,
+        fontWeight: 'bold',
+       
+    }
+
+    const orderButtonStyle = {
+        fontSize: 15,
+        fontWeight: 'bold',
+        width: '70px'
+    }
+
+    const handleGoBackButtonClick = () => {
+        navigate("/")
+    }
 
 
 
@@ -50,7 +65,7 @@ function Disclaimer() {
             
         }}>
             <div  className='bigDivStyle'>
-                <h2  className='h2Style'>Disclaimer</h2>
+                <h2 style={{ textAlign: "center"}}className='h2Style'>Disclaimer</h2>
                 
 
                 <div  className='innerDivStyle'>
@@ -64,10 +79,16 @@ function Disclaimer() {
 
                 </div>
 
-                <div  className='buttonDivStyle'>
-                    <button className='buttonStyle' onClick={handleClick}>Order</button>
-             
+            {/* <div className='button-container'> */}
+                <div className='orderButtonStyle'>
+                    <button style={orderButtonStyle} onClick={handleClick}>Order</button>
                 </div>
+
+                <div className='backButtonDivStyle'>
+                    <button style={buttonStyle} onClick={handleGoBackButtonClick}>Back</button>
+                </div>
+            {/* </div> */}
+
             </div>
             
         </div>

@@ -15,6 +15,21 @@ function Timer() {
             let nextMonday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilMonday);
             let timeUntilMonday = nextMonday - currDate; // gives time in milliseconds
 
+
+            // let currDateT = new Date();
+            // let daysUntilTuesday = (2 + (7 - currDate.getDay())) % 7;
+            // let nextTuesday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilTuesday);
+            // let timeUntilTuesday = nextTuesday - currDate; // gives time in milliseconds
+
+            // timeUntilTuesday -= 39600000
+            // // timeUntilTuesday -= 240000
+
+            // let days = Math.floor(timeUntilTuesday / (1000 * 60 * 60 * 24));
+            // let hours = Math.floor((timeUntilTuesday % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            // let minutes = Math.floor((timeUntilTuesday % (1000 * 60 * 60)) / (1000 * 60));
+            // let seconds = Math.floor((timeUntilTuesday % (1000 * 60)) / 1000);
+
+            
             let days = Math.floor(timeUntilMonday / (1000 * 60 * 60 * 24));
             let hours = Math.floor((timeUntilMonday % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             let minutes = Math.floor((timeUntilMonday % (1000 * 60 * 60)) / (1000 * 60));
@@ -26,31 +41,7 @@ function Timer() {
             setSecTime(seconds);
 
 
-            // timeUntilMonday = 0;  
 
-
-            // if ( timeUntilMonday <= 0 ){
-
-            //     fetch("http://127.0.0.1:5001/send-orders", {
-            //         method: "post",
-            //         headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
-            //         body: JSON.stringify({}),
-            //     })
-            //     .then( (response) => {
-            //         if ( response.ok ){
-            //             return response.json()
-            //         }
-            //         else{
-            //             throw new Error("Error: " + response.status);
-            //         }
-            //     })
-            //     .then( (data) => {
-            //         console.log(data);
-            //     })
-            //     .catch((error) => {
-            //         console.error(error);
-            //     })
-            // }
 
         }, 1000);
 

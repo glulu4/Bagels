@@ -17,18 +17,23 @@ const timer = setInterval(() => {
   let nextMonday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilMonday);
   let timeUntilMonday = nextMonday - currDate; // gives time in milliseconds
 
-  // let days = Math.floor(timeUntilMonday / (1000 * 60 * 60 * 24));
-  // let hours = Math.floor((timeUntilMonday % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  // let minutes = Math.floor((timeUntilMonday % (1000 * 60 * 60)) / (1000 * 60));
-  // let seconds = Math.floor((timeUntilMonday % (1000 * 60)) / 1000);
+
+
+  // let currDateT = new Date();
+  // let daysUntilTuesday = (2 + (7 - currDate.getDay())) % 7;
+  // let nextTuesday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilTuesday);
+  // let timeUntilTuesday = nextTuesday - currDate; // gives time in milliseconds
 
 
 
+  // timeUntilTuesday -= 39600000
 
+  
 
+  // console.log(timeUntilTuesday);
 
-  if (timeUntilMonday <= 0) {
-
+  if (timeUntilMonday <= 1001 && timeUntilMonday > 0 ) {
+    console.log("in here: ", timeUntilMonday);
     fetch("https://bagel-app-11c1ad484767.herokuapp.com/send-orders", {
       method: "post",
       headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
@@ -46,7 +51,7 @@ const timer = setInterval(() => {
         console.log(data);
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
       })
   }
 

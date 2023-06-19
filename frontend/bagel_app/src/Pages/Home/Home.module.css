@@ -72,7 +72,7 @@ secttion.three {
 
     grid-area: content;
     display: flex;
-    align-items: flex-start;
+    align-items: left;
     justify-content: center;
     flex-direction: column;
 }

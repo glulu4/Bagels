@@ -133,7 +133,7 @@ function Payment(props){
                     break;
             }
 
-            console.log(paymentIntent);
+            // console.log(paymentIntent);
         });
 
 

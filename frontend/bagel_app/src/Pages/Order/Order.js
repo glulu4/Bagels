@@ -6,11 +6,11 @@ import { useLocation } from 'react-router-dom';
 
 
 function Order() {
-    console.log(sessionStorage )
+    // console.log(sessionStorage )
     const navigate = useNavigate();
     const location = useLocation();
     let props = {}
-    console.log(location);
+    // console.log(location);
 
     if ( (location.state) ){
         const { _cost, _name, _email, _numPlain, _numSeseme, _numEv, _numPoppy, _numCinSug, _numBagels } = location.state;
@@ -24,7 +24,7 @@ function Order() {
         // console.log('_numCinSug:', _numCinSug);
         // console.log('_numBagels:', _numBagels);
         props = { ...location.state } // destructuring syntax
-        console.log("poops", props);
+        // console.log("poops", props);
     }
 
 

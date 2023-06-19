@@ -8,8 +8,8 @@ import MyDropdown from './Dropdown.js';
 
 
 function Form({ handleFormButtonSubmit, props } ) {
-    console.log("from form, porps", props);
-    console.log(props);
+    // console.log("from form, porps", props);
+    // console.log(props);
 
     const [name, setName] = useState(props._name || '');
     const [email, setEmail] = useState(props._email || '');
@@ -116,7 +116,7 @@ function Form({ handleFormButtonSubmit, props } ) {
     const handleNameChange = (event) => {
         event.preventDefault();
         setName(event.target.value)
-        console.log(name);
+        // console.log(name);
         
     }
 
