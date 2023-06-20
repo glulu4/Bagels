@@ -1,7 +1,6 @@
 import styles from './Form.module.css'
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import MyDropdown from './Dropdown.js';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -25,7 +24,7 @@ function Form({ handleFormButtonSubmit, props } ) {
 
 
     const blue = '#5da2da' // blue
-    const darkpink = '#c96567' // blue
+    // const darkpink = '#c96567' // blue
     const pink = '#f78888'
 
     const buttonStyle = {

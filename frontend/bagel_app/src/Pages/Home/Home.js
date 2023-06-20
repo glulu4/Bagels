@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 import React, { useEffect } from 'react';
 import * as THREE from 'three';
@@ -10,7 +10,7 @@ import gsap from 'gsap';
 
 import Timer from './Timer.js'
 import styles from './Home.module.css'; 
-import { WinPhoneView, isMobile } from 'react-device-detect';
+import { isMobile } from 'react-device-detect';
 
 
 
@@ -34,7 +34,7 @@ function Home(){
          * Loaders
          */
         //const loadingBarElement = document.querySelector('.loading-bar')
-        const bodyElement = document.querySelector('body')
+        // const bodyElement = document.querySelector('body')
         const loadingManager = new THREE.LoadingManager(
             () => {
                 window.setTimeout(() => {
@@ -268,12 +268,12 @@ function Home(){
          * Animate
          */
         const clock = new THREE.Clock()
-        let lastElapsedTime = 0
+        // let lastElapsedTime = 0
 
         const tick = () => {
             const elapsedTime = clock.getElapsedTime()
-            const deltaTime = elapsedTime - lastElapsedTime
-            lastElapsedTime = elapsedTime
+            // const deltaTime = elapsedTime - lastElapsedTime
+            // lastElapsedTime = elapsedTime
 
             if (!!donut) {
                 donut.position.y = Math.sin(elapsedTime * .5) * .1 - 0.1

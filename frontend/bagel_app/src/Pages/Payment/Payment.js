@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import { useElements, useStripe, PaymentElement, LinkAuthenticationElement } from "@stripe/react-stripe-js";
+import { useElements, useStripe, PaymentElement } from "@stripe/react-stripe-js";
 // import { Elements } from "@stripe/react-stripe-js";
-import { useLocation, useNavigate } from 'react-router-dom';
-import { isMobile } from 'react-device-detect';
+import { useNavigate } from 'react-router-dom';
+// import { isMobile } from 'react-device-detect';
 
 
 import './Payment.css'
 
 function Payment(props){
     // console.log(props.prop.clientSecret);
-    console.log(props )
-    const location = useLocation()
+    // console.log(props )
+    // const location = useLocation()
     const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels } = props.state;
     // console.log("cost: ", cost);
     // console.log("name: ", name);
@@ -40,7 +40,7 @@ function Payment(props){
 
 
     const blue = '#5da2da' // blue
-    const darkpink = '#c96567' // blue
+    // const darkpink = '#c96567' // blue
     const pink = '#f78888'
 
 
@@ -134,7 +134,7 @@ function Payment(props){
         
 
         stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-            console.log("pay intent",paymentIntent);
+            // console.log("pay intent",paymentIntent);
             setPaymentID(paymentIntent.id )
             switch (paymentIntent.status) {
                 case "succeeded":

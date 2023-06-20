@@ -1,12 +1,11 @@
 import { Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import './App.css';
 
 import Home from './Pages/Home/Home.js';
 import Order from './Pages/Order/Order.js';
-import Payment from './Pages/Payment/Payment.js';
 import PaymentPage from './Pages/Payment/PaymentPage.js';
 import Success from "./Pages/Success/Success.js"
 import ConfirmOrder from './Pages/ConfirmOrder/ConfirmOrder.js';

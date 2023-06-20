@@ -13,7 +13,7 @@ function Order() {
     // console.log(location);
 
     if ( (location.state) ){
-        const { _cost, _name, _email, _numPlain, _numSeseme, _numEv, _numPoppy, _numCinSug, _numBagels } = location.state;
+        // const { _cost, _name, _email, _numPlain, _numSeseme, _numEv, _numPoppy, _numCinSug, _numBagels } = location.state;
         // console.log('_cost:', _cost);
         // console.log('_name:', _name);
         // console.log('_email:', _email);

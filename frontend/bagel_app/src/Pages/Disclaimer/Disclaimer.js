@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import navigate, { useNavigate, useLocation } from 'react-router-dom';
+import React from 'react'
+import { useNavigate, useLocation } from 'react-router-dom';
 import './Disclaimer.css'
-import { Color } from 'three';
+
 
 
 function Disclaimer() {
@@ -9,7 +9,7 @@ function Disclaimer() {
 // 5da2da
 
     const blue = '#5da2da' // blue
-    const darkpink = '#c96567' // blue
+    // const darkpink = '#c96567' // blue
     const pink = '#f78888'
 
     const navigate = useNavigate();

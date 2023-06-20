@@ -7,7 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { loadStripe } from "@stripe/stripe-js";
 
 
 console.log("index.ks from", window.location);
@@ -56,6 +55,7 @@ const timer = setInterval(() => {
   }
 
 }, 1000);
+console.log(timer);
 
 
 

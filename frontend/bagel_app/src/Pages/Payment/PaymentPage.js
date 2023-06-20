@@ -3,7 +3,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Payment from './Payment';
 import { useLocation } from 'react-router-dom';
-import { isMobile } from 'react-device-detect';
 
 
 function PaymentPage() {
@@ -23,7 +22,7 @@ function PaymentPage() {
             numBagels: numBagels
     }
 
-    const [publishableKey, setPublishableKey] = useState("");
+    // const [publishableKey, setPublishableKey] = useState("");
     const [clientSecret, setClientSecret] = useState("");
     const [options, setOptions] = useState({});
     const [stripePromise, setStripePromise] = useState(null);
@@ -51,14 +50,14 @@ function PaymentPage() {
                 const configResponse = await fetch(`${backendAddress}/config`);
                 const { publishableKey } = await configResponse.json();
 
-                console.log("publishableKey",publishableKey);
+                // console.log("publishableKey",publishableKey);
 
                 if (!publishableKey) {
                     console.log("publishable key is null");
                     return;
                 }
 
-                setPublishableKey(publishableKey);
+                // setPublishableKey(publishableKey);
 
                 const paymentIntentResponse = await fetch(`${backendAddress}/create-payment-intent/`, {
                     method: "post",
