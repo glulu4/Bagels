@@ -7,7 +7,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 function ConfirmOrder(){
-    console.log(sessionStorage)
     const location = useLocation();
     const navigate = useNavigate();
     const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels } = location.state;
@@ -46,7 +45,7 @@ function ConfirmOrder(){
         });
     }
     const blue = '#5da2da' // blue
-    const darkpink = '#c96567' // blue
+    // const darkpink = '#c96567' // blue
     const pink = '#f78888'
 
     const buttonStyle = {

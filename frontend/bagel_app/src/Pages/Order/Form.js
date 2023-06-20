@@ -95,11 +95,11 @@ function Form({ handleFormButtonSubmit, props } ) {
         let groupsOfThree = Math.floor(numBagels / 3);
         let remainder = numBagels % 3;
 
-        cost = (groupsOfThree * 5) + (remainder * 2);
-        if (isNaN(cost)) {
+        let tempCost = (groupsOfThree * 5) + (remainder * 2);
+        if (isNaN(tempCost)) {
             setNumBagels(0)
         }
-        setCost(cost);
+        setCost(tempCost);
 
 
 
