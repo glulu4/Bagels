@@ -24,9 +24,26 @@ function Form({ handleFormButtonSubmit, props } ) {
     const navigate = useNavigate()
 
 
+    const blue = '#5da2da' // blue
+    const darkpink = '#c96567' // blue
+    const pink = '#f78888'
+
     const buttonStyle = {
         fontSize: 15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white',
+        backgroundColor: blue,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+        alignSelf: 'center',
+    }
+
+    const proceedButtonStyle = {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'white',
+        backgroundColor: pink,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+        alignSelf: 'center',
     }
     
     // runs whenever any bagel amount is updated
@@ -263,7 +280,7 @@ function Form({ handleFormButtonSubmit, props } ) {
                         )}
 
                         <div className={styles.buttonContainer}>
-                            <button style={buttonStyle} id="button" type="submit" value="Submit" onClick={handleButtonSubmit}>Proceed to Checkout</button> 
+                            <button style={proceedButtonStyle} id="button" type="submit" value="Submit" onClick={handleButtonSubmit}>Proceed to Checkout</button> 
                         </div>
                         <div style={{
                             display: 'flex',

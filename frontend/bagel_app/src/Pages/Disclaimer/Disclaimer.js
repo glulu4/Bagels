@@ -1,24 +1,39 @@
 import React, { useEffect } from 'react'
 import navigate, { useNavigate, useLocation } from 'react-router-dom';
 import './Disclaimer.css'
+import { Color } from 'three';
 
 
 function Disclaimer() {
 
+// 5da2da
 
+    const blue = '#5da2da' // blue
+    const darkpink = '#c96567' // blue
+    const pink = '#f78888'
 
     const navigate = useNavigate();
     const location = useLocation();
     const buttonStyle = {
         fontSize: 15,
         fontWeight: 'bold',
+        width: '70px',
+        color: 'white',
+        backgroundColor: blue,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+        alignSelf: 'center',
        
     }
 
     const orderButtonStyle = {
         fontSize: 15,
         fontWeight: 'bold',
-        width: '70px'
+        width: '70px',
+        color: 'white',
+        backgroundColor: pink,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+        alignSelf: 'center',
+
     }
 
     const handleGoBackButtonClick = () => {
@@ -79,15 +94,17 @@ function Disclaimer() {
 
                 </div>
 
-            {/* <div className='button-container'> */}
-                <div className='orderButtonStyle'>
-                    <button style={orderButtonStyle} onClick={handleClick}>Order</button>
-                </div>
-
-                <div className='backButtonDivStyle'>
+            <div className='button-container'>
+                {/* <div className='backButtonDivStyle'> */}
                     <button style={buttonStyle} onClick={handleGoBackButtonClick}>Back</button>
-                </div>
-            {/* </div> */}
+                {/* </div> */}
+
+                {/* <div className='orderButtonStyle'> */}
+                    <button style={orderButtonStyle} onClick={handleClick}>Order</button>
+                {/* </div> */}
+
+
+            </div>
 
             </div>
             

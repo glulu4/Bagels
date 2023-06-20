@@ -45,15 +45,32 @@ function ConfirmOrder(){
             }
         });
     }
+    const blue = '#5da2da' // blue
+    const darkpink = '#c96567' // blue
+    const pink = '#f78888'
+
     const buttonStyle = {
         fontSize: 15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white',
+        backgroundColor: blue,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+        alignSelf: 'center',
+    }
+
+    const ProceedButtonStyle = {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'white',
+        backgroundColor: pink,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+        alignSelf: 'center',
     }
 
 
     return (
         <div className={styles.recieptDiv}>
-            <h3 className={styles.title} >Bagel Order Receipt</h3>
+            <h2 className={styles.title} >Confirm Order</h2>
             <table cellPadding="1" cellSpacing="0">
                 {/* <tr className="top">
                     <td colSpan="2">
@@ -132,14 +149,16 @@ function ConfirmOrder(){
             <div style = {{
                 display: 'flex',
                 justifyContent:'center',
-                fontSize:"larger"
+                fontSize:"larger",
+                paddingBottom:'2%'
             }}>
-                <button onClick={handleButtonClick} style={buttonStyle}>Proceed to Payment</button>
+                <button onClick={handleButtonClick} style={ProceedButtonStyle}>Proceed to Payment</button>
             </div>
-            <br></br>
+            {/* <br></br> */}
             <div style={{
                 display: 'flex',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                paddingTop:'2%'
             }}>
                 <button style={buttonStyle}  onClick={handleGoBackButtonClick} >Back</button>
             </div>

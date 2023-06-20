@@ -39,9 +39,27 @@ function Payment(props){
     const backendAddress = 'https://bagel-app-11c1ad484767.herokuapp.com'
 
 
+    const blue = '#5da2da' // blue
+    const darkpink = '#c96567' // blue
+    const pink = '#f78888'
+
+
     const buttonStyle = {
         fontSize: 15,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white',
+        backgroundColor: blue,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+        alignSelf: 'center',
+    }
+
+    const ProceedButtonStyle = {
+        fontSize: 15,
+        fontWeight: 'bold',
+        color: 'white',
+        backgroundColor: pink,
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
+        alignSelf: 'center',
     }
     // console.log(props.prop.clientSecret); // 
 
@@ -201,7 +219,8 @@ function Payment(props){
     return (
         <div className='outerDiv'>
             <div className='payDiv'>
-                <h3 style={{ marginTop: 60, textAlign: 'center' }} >Payments</h3>
+                <h2 className='title'>Payment</h2>
+
                 <form className='payForm' onSubmit={handleSubmit}>
                    
                     <PaymentElement options={paymentElementOptions}/>
@@ -212,7 +231,7 @@ function Payment(props){
                         display: "flex",
                         justifyContent: "center"}}
                         >
-                        <button style={buttonStyle} id="button" type="submit" value="Submit" disabled={isLoading || !stripe || !elements}>Pay ${cost}</button>
+                        <button style={ProceedButtonStyle} id="button" type="submit" value="Submit" disabled={isLoading || !stripe || !elements}>Pay ${cost}</button>
                     </div>
 
                     <br />
