@@ -22,9 +22,18 @@ app.secret_key = os.getenv("SESSION_KEY") # for sessions
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bagel.db' 
 db.init_app(app) # instead of passing 'app' to db = SQLAlchemy(app) in model.py
 
-CORS(app, origins=["https://www.shmuelsmondaybagels.com","http://localhost:3000","https://bagel-app-11c1ad484767.herokuapp.com","https://localhost:3000", "http://127.0.0.1:3000", "http://10.0.0.153:3000", "http://10.1.10.153:5001", "https://10.0.0.153:3000"]) # third is for mobile 10.0.0.153:3000
+CORS(app, origins=["https://shmuelsmondaybagels.com",
+"https://shmuelsmondaybagels.com", 
+"https://www.shmuelsmondaybagels.com",
+"http://localhost:3000",
+"https://bagel-app-11c1ad484767.herokuapp.com",
+"https://localhost:3000", 
+"http://127.0.0.1:3000", 
+"http://10.0.0.153:3000", 
+"http://10.1.10.153:5001", 
+"https://10.0.0.153:3000"]
+) 
 
-# on ios, the server needsto be https
 
 @app.cli.command('initdb')
 def initdb_command():
