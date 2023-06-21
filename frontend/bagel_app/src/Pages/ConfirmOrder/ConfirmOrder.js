@@ -7,6 +7,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 
 function ConfirmOrder(){
+    window.onload = () => {
+        window.scrollTo(0, 0);
+    }
     const location = useLocation();
     const navigate = useNavigate();
     const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels } = location.state;
@@ -46,7 +49,7 @@ function ConfirmOrder(){
     }
     const blue = '#5da2da' // blue
     // const darkpink = '#c96567' // blue
-    const pink = '#f78888'
+    const green = '#87C38F'
 
     const buttonStyle = {
         fontSize: 15,
@@ -61,7 +64,7 @@ function ConfirmOrder(){
         fontSize: 15,
         fontWeight: 'bold',
         color: 'white',
-        backgroundColor: pink,
+        backgroundColor: green,
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
         alignSelf: 'center',
     }

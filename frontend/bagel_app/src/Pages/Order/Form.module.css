@@ -4,8 +4,12 @@
 .orderPage{
     display: flex;
     justify-content: center;
-    padding-bottom:5%;
-    padding-top: 5%;
+    flex-direction:column;
+    align-items: center;
+    /* padding-bottom:5%;
+    padding-top: 5%; */
+    /* margin-bottom: 2%; */
+    margin: 3%;
 }
 .formcontainer {
     display: flex;
@@ -55,21 +59,28 @@ li{
     border-radius: 4px;
     border: whitesmoke;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    /* margin-left:px; */
+}
+/* .inputNumberBox{
+    margin-left:10px;
+} */
+
+.divItems{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
 }
 
 input[type="number"]{
-    width: 40px;
+    width: 30px;
     height: 27px;
     border: whitesmoke;
     border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    background-color:white;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
     margin-left: 1%;
     font-size:14px;
-        font-family: "Haas Grot Text R Web",
-                "Helvetica Neue",
-                Helvetica,
-                Arial,
-                sans-serif;
+    font-family: "Haas Grot Text R Web","Helvetica Neue",Helvetica,Arial,sans-serif;
     
 
 }
@@ -114,20 +125,27 @@ button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.disclaimer{
+    text-align: center;
+    padding-top:1%;
+    font-weight:300;
+}
+
 @media (max-width: 800px) {
+
+    .disclaimer {
+        text-align: center;
+        margin-top: -5%;
+        font-weight: 400;
+    }
     .formcontainer {
-        
         width: 80%;
         margin: 40px auto;
         /* padding: 10px; */
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     }
 
-    /* .inputBox {
-        width: 100%;
-        border-radius: 4px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    } */
+
 input[type="number"] {
     -webkit-appearance: none;
     flex: 1;

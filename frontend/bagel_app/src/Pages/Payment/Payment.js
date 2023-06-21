@@ -40,8 +40,8 @@ function Payment(props){
 
 
     const blue = '#5da2da' // blue
-    // const darkpink = '#c96567' // blue
-    const pink = '#f78888'
+    const green = '#87C38F'
+
 
 
     const buttonStyle = {
@@ -57,7 +57,7 @@ function Payment(props){
         fontSize: 15,
         fontWeight: 'bold',
         color: 'white',
-        backgroundColor: pink,
+        backgroundColor: green,
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
         alignSelf: 'center',
     }

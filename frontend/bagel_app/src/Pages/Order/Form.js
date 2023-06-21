@@ -25,9 +25,13 @@ function Form({ handleFormButtonSubmit, props } ) {
 
     const blue = '#5da2da' // blue
     // const darkpink = '#c96567' // blue
-    const pink = '#f78888'
+    // const pink = '#f78888'
+    const grey = '#96ACB7'
+    const green = '#87C38F'
+    const [buttonColor, setButtonColor] = useState(grey)
 
-    const buttonStyle = {
+
+    let buttonStyle = {
         fontSize: 15,
         fontWeight: 'bold',
         color: 'white',
@@ -36,11 +40,12 @@ function Form({ handleFormButtonSubmit, props } ) {
         alignSelf: 'center',
     }
 
-    const proceedButtonStyle = {
+    let proceedButtonStyle = {
         fontSize: 15,
         fontWeight: 'bold',
         color: 'white',
-        backgroundColor: pink,
+        backgroundColor: buttonColor,
+        // backgroundColor: validButtonColor ? green : pink,
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
         alignSelf: 'center',
     }
@@ -49,23 +54,6 @@ function Form({ handleFormButtonSubmit, props } ) {
     useEffect(() =>  {
 
 
-        // if (isNaN(parseInt(numPlain)))
-        //     setNumPlain(0)
-        
-        // if (isNaN(parseInt(numSeseme)))
-        //     setNumPlain(0)
-        
-        // if (isNaN(parseInt(numEv)))
-        //     setNumPlain(0)
-
-        // if (isNaN(parseInt(numPoppy)))
-        //     setNumPlain(0)
-
-        // if (isNaN(parseInt(numCinSug)))
-        //     setNumPlain(0)
-            
-        // const numBagels = parseInt(numPlain) + parseInt(numSeseme) + parseInt(numEv) + parseInt(numPoppy) + parseInt(numCinSug);
-        // setNumBagels(numBagels)
 
         let parsedNumPlain = parseInt(numPlain);
         let parsedNumSeseme = parseInt(numSeseme);
@@ -106,6 +94,16 @@ function Form({ handleFormButtonSubmit, props } ) {
 
     }, [numPlain, numSeseme, numEv, numPoppy, numCinSug ]) 
 
+    useEffect( () => {
+
+        if ((name && email && cost)) {
+            setButtonColor(green);
+        }
+        else{
+            setButtonColor(grey);
+        }
+    }, [name,email,cost])
+
 
     
 
@@ -119,8 +117,10 @@ function Form({ handleFormButtonSubmit, props } ) {
 
         else{
             handleFormButtonSubmit(cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels);
+            
 
         }
+
 
 
 
@@ -145,7 +145,7 @@ function Form({ handleFormButtonSubmit, props } ) {
     const handleGoBackButtonClick = () => {
         // navigate('/disclaimer')
 
-        navigate('/disclaimer', {
+        navigate('/', {
             state: {
                 _cost: cost,
                 _name: name,
@@ -166,6 +166,7 @@ function Form({ handleFormButtonSubmit, props } ) {
     
 
     return (
+
         <div className={styles.orderPage}>
         
             <div className={styles.formcontainer} >
@@ -202,71 +203,97 @@ function Form({ handleFormButtonSubmit, props } ) {
                     </div>
                     <br />
 
-                    <div>
+                    <div >
                         <label>Total: {numBagels} bagel's for ${cost}</label>
                         <p>Bagels: 3 for $5 | 12 for $20 </p>
                         
                         <ul className={styles.bagelList}> 
 
 
-                            <li>                         
-                                Plain <input 
-                                    type='number' 
-                                    min={0} 
-                                    value={numPlain}
-                                    onChange={(event) => {
-                                        event.preventDefault();
-                                        setNumPlain(event.target.value)
-                                    }}
-                                />
-                            </li>
 
+                        <div className={styles.divItems}>
+                            <label>Plain</label>
                             <li>
-                                Seseme <input
-                                    type='number'
-                                    min={0}
-                                    value={numSeseme}
-                                    onChange={(event) => {
-                                        event.preventDefault();
-                                        setNumSeseme(event.target.value)
-                                    }}
+                                <input
+                                className={styles.inputNumberBox}
+                                type='number'
+                                min={0}
+                                value={numPlain}
+                                onChange={(event) => {
+                                    event.preventDefault();
+                                    setNumPlain(event.target.value)
+                                }}
                                 />
                             </li>
-                            <li>
-                                Everything <input
-                                    type='number'
-                                    min={0}
-                                    value={numEv}
-                                    onChange={(event) => {
-                                        event.preventDefault();
-                                        setNumEv(event.target.value)
-                                    }}
-                                />
-                            </li>
+                        </div>
+                            <div className={styles.divItems}>
+                                <label>Sesame</label>
+                                <li>
+                                    <input
+                                        className={styles.inputNumberBox}
+                                        type='number'
+                                        min={0}
+                                        value={numSeseme}
+                                        onChange={(event) => {
+                                            event.preventDefault();
+                                            setNumSeseme(event.target.value)
+                                        }}
+                                    />
+                                </li>
+                            </div>
 
-                            <li>
-                                Poppy Seed <input
-                                    type='number'
-                                    min={0}
-                                    value={numPoppy}
-                                    onChange={(event) => {
-                                        event.preventDefault();
-                                        setNumPoppy(event.target.value) // !(name && email && cost)
-                                    }}
-                                />
-                            </li>
-                            <li>
-                                Cinnamon Sugar <input
-                                    type='number'
-                                    min={0}
-                                    placeholder=""
-                                    value={numCinSug}
-                                    onChange={(event) => {
-                                        event.preventDefault();
-                                        setNumCinSug(event.target.value)
-                                    }}
-                                />
-                            </li>
+                            <div className={styles.divItems}>
+                                <label>Everything</label>
+                                <li>
+                                    <input
+                                        className={styles.inputNumberBox}
+                                        type='number'
+                                        min={0}
+                                        value={numEv}
+                                        onChange={(event) => {
+                                            event.preventDefault();
+                                            setNumEv(event.target.value)
+                                        }}
+                                    />
+                                </li>
+                            </div>
+
+                            <div className={styles.divItems}>
+                                <label>Poppy Seed</label>
+                                <li>
+                                    <input
+                                        className={styles.inputNumberBox}
+                                        type='number'
+                                        min={0}
+                                        value={numPoppy}
+                                        onChange={(event) => {
+                                            event.preventDefault();
+                                            setNumPoppy(event.target.value) // !(name && email && cost)
+                                        }}
+                                    />
+                                </li>
+                            </div>
+                            <div className={styles.divItems}>
+                                <label>Cinnamon Sugar</label>
+                                    <li>
+                                        <input
+                                            className={styles.inputNumberBox}
+                                            type='number'
+                                            min={0}
+                                            placeholder=""
+                                            value={numCinSug}
+                                            onChange={(event) => {
+                                                event.preventDefault();
+                                                setNumCinSug(event.target.value)
+                                            }}
+                                        />
+                                    </li>
+                            </div>
+
+
+
+
+
                         </ul>
                         {/* <br /> */}
                         {/* <br /> */}
@@ -298,7 +325,7 @@ function Form({ handleFormButtonSubmit, props } ) {
 
                 </form>
             </div>
-
+            <p className={styles.disclaimer}>DISCLAIMER: Bagels were baked in a <strong> <i>meat</i></strong> oven <br/> parve oven comimg soon</p>
         </div>
 
          

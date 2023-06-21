@@ -9,13 +9,8 @@ import Order from './Pages/Order/Order.js';
 import PaymentPage from './Pages/Payment/PaymentPage.js';
 import Success from "./Pages/Success/Success.js"
 import ConfirmOrder from './Pages/ConfirmOrder/ConfirmOrder.js';
-import Disclaimer from "./Pages/Disclaimer/Disclaimer.js";
 
-function App(props) {
-
-
-
-
+function App() {
   return (
     <>
       <Helmet>
@@ -23,7 +18,6 @@ function App(props) {
       </Helmet>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="/order" element={<Order />} />
         <Route path="/confirm-order" element={<ConfirmOrder />} />
         <Route path="/payment" element={<PaymentPage />} />

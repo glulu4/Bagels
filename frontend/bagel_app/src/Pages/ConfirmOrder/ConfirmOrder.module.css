@@ -1,4 +1,5 @@
 .recieptDiv {
+    scroll-behavior: smooth;
     display: flex;
     justify-content: center;
     flex-direction:column;
@@ -16,6 +17,7 @@
     /* Adjust the margin-top to move it down */
     border-radius: 10px;
     /* Add this line to round the corners */
+    height:max-content;
 
 }
 

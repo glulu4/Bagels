@@ -8,6 +8,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+window.onload = () => {
+  window.scrollTo(0, 0);
+}
+
+
+
 
 console.log("index.ks from", window.location);
 const timer = setInterval(() => {

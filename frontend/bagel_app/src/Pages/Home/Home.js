@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import React, { useEffect } from 'react';
 import * as THREE from 'three';
@@ -15,7 +15,8 @@ import { isMobile } from 'react-device-detect';
 
 
 function Home(){
-    console.log(sessionStorage)
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect( () => {
 
@@ -57,9 +58,9 @@ function Home(){
             },
             (itemUrl, itemsLoaded, itemsTotal) => {
                 console.log(itemUrl, itemsLoaded, itemsTotal)
-                const progressRatio = itemsLoaded / itemsTotal
+                // const progressRatio = itemsLoaded / itemsTotal
                 //loadingBarElement.style.transform = `scaleX(${progressRatio})`
-                console.log(progressRatio)
+                // console.log(progressRatio)
             },
             () => {
 
@@ -303,9 +304,29 @@ function Home(){
         };
 
     }, [])
+    const handleClick = () => {
+        if (location.state) {
+            const { _cost, _name, _email, _numPlain, _numSeseme, _numEv, _numPoppy, _numCinSug, _numBagels } = location.state;
+            navigate('/order', {
+                state: {
+                    _cost: _cost,
+                    _name: _name,
+                    _email: _email,
+                    _numPlain: _numPlain,
+                    _numSeseme: _numSeseme,
+                    _numEv: _numEv,
+                    _numPoppy: _numPoppy,
+                    _numCinSug: _numCinSug,
+                    _numBagels: _numBagels
+                }
+            });
+        }
+        else {
+            navigate('/order')
 
+        }
+    }
 
-    //const navigate = useNavigate();
     return (
 
         <div className='homePage'>
@@ -333,10 +354,10 @@ function Home(){
                 <div style={{
                     width:"50%"
                 }}>
-                    <Link to="/disclaimer">
+                    <a onClick={handleClick} href={`${window.location.origin}/order`}>
                         <h1 className={`${styles['order-btn']} homePage`}>order now </h1>
 
-                    </Link>
+                    </a>
                 </div>
 
                 
@@ -355,15 +376,7 @@ function Home(){
 
 
 
-        // <>
-        //     <h1>Home</h1>
-        //     <Link to="/order">Order</Link>
 
-
-        //     <button type="" onClick={() => navigate('order') }>
-        //         Order
-        //     </button>
-        // </>
 
     );
 

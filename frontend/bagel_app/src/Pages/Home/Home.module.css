@@ -12,15 +12,19 @@ html {
 }
 
 body {
+    scroll-behavior: smooth;
     /* background: #ffc0cb; maybe dark salmon */
     /* background-color:rgb(47, 143, 175); */
     /* background-color: skyblue; */
     background-color: #90ccf4;
     /* background-color: skyblue; */
     position: relative;
-    height: 100%;
     /* overflow: hidden; */
     font-family: 'Poppins', sans-serif;
+    overflow: auto;
+    height: 100%;
+        margin: 0;
+        padding: 0;
 }
 
 /* body.loaded {
@@ -204,4 +208,19 @@ p {
     .container {
         padding: 0 10px;
     }
+        body {
+            scroll-behavior: smooth;
+            /* background: #ffc0cb; maybe dark salmon */
+            /* background-color:rgb(47, 143, 175); */
+            /* background-color: skyblue; */
+            background-color: #90ccf4;
+            /* background-color: skyblue; */
+            position: relative;
+            /* overflow: hidden; */
+            font-family: 'Poppins', sans-serif;
+            overflow: auto;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
 }
