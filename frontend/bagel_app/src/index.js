@@ -1,3 +1,4 @@
+import './env-config.js'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -12,7 +13,8 @@ window.onload = () => {
   window.scrollTo(0, 0);
 }
 
-
+const apiUrl = process.env.API_URL;
+console.log(apiUrl);
 
 
 console.log("index.ks from", window.location);

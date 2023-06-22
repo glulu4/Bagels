@@ -49,5 +49,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "install": "^0.13.0",
+    "npm": "^9.7.2"
   }
 }
