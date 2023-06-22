@@ -13,7 +13,7 @@ window.onload = () => {
   window.scrollTo(0, 0);
 }
 
-const apiUrl = process.env.BACKEND_URL;
+const apiUrl = process.env.REACT_APP_BACKEND_URL;
 console.log(apiUrl);
 console.log(process.env);
 
