@@ -13,7 +13,7 @@ window.onload = () => {
   window.scrollTo(0, 0);
 }
 
-const apiUrl = process.env.API_URL;
+const apiUrl = process.env.BACKEND_URL;
 console.log(apiUrl);
 
 
