@@ -15,6 +15,7 @@ window.onload = () => {
 
 const apiUrl = process.env.BACKEND_URL;
 console.log(apiUrl);
+console.log(process.env);
 
 
 console.log("index.ks from", window.location);
