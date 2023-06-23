@@ -100,7 +100,7 @@ function PaymentPage() {
         };
 
         fetchData();
-    }, [cost]);
+    }, );
 
     if (!stripePromise) {
         return <div>Loading...</div>;
