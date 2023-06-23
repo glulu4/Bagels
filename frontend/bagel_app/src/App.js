@@ -1,3 +1,5 @@
+import './config-env.js'
+
 import { Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import React from 'react';

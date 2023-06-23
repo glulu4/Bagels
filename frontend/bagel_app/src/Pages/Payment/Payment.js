@@ -36,7 +36,7 @@ function Payment(props){
     const [isLoading, setIsLoading] = useState(false);
     const [paymentID, setPaymentID] = useState(null);
 
-    const backendAddress = 'https://bagel-app-11c1ad484767.herokuapp.com'
+    const backendAddress = process.env.REACT_APP_BACKEND_URL;
 
 
     const blue = '#5da2da' // blue

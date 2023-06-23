@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -13,9 +12,9 @@ window.onload = () => {
   window.scrollTo(0, 0);
 }
 
-const apiUrl = process.env.BACKEND_URL;
-console.log(apiUrl);
-console.log(process.env);
+// const apiUrl = process.env.REACT_APPBACKEND_URL;
+// console.log(apiUrl);
+
 
 
 console.log("index.ks from", window.location);
@@ -24,6 +23,8 @@ const timer = setInterval(() => {
   let daysUntilMonday = 1 + ((7 - currDate.getDay()) % 7);
   let nextMonday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilMonday);
   let timeUntilMonday = nextMonday - currDate; // gives time in milliseconds
+
+  const backendAddress = process.env.REACT_APP_BACKEND_URL;
 
 
 
@@ -36,13 +37,16 @@ const timer = setInterval(() => {
 
   // timeUntilTuesday -= 39600000
 
-  
+
 
   // console.log(timeUntilTuesday);
+// timeUntilMonday <= 1001 && timeUntilMonday >= 0
 
-  if (timeUntilMonday <= 1001 && timeUntilMonday > 0 ) {
-    console.log("in here: ", timeUntilMonday);
-    fetch("https://bagel-app-11c1ad484767.herokuapp.com/send-orders", {
+  // timeUntilMonday = 0
+  if (timeUntilMonday <= 1001 && timeUntilMonday >= 0) {
+    // console.log("in here: ", timeUntilMonday);
+
+    fetch(`${backendAddress}/send-orders`, {
       method: "post",
       headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
       body: JSON.stringify({}),
@@ -59,7 +63,7 @@ const timer = setInterval(() => {
         console.log(data);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("We errored: ", error);
       })
   }
 
@@ -70,7 +74,9 @@ console.log(timer);
 
   // can be an instance of stripe or a promise that resolves into a instance of .. 
   // const stripePromise = loadStripe( publishableKey ) // dont call in render
-  
+
+
+
 
   const root = ReactDOM.createRoot(document.getElementById('root'));
   root.render(
