@@ -54,11 +54,12 @@ function PaymentPage() {
 
                 // console.log("publishableKey",publishableKey);
 
+                console.log("here 1");
                 if (!publishableKey) {
                     console.log("publishable key is null");
                     return;
                 }
-
+                console.log("here 2");
                 // setPublishableKey(publishableKey);
 
                 const paymentIntentResponse = await fetch(`${backendAddress}/create-payment-intent/`, {
@@ -71,12 +72,15 @@ function PaymentPage() {
                         amount: cost,
                     })
                 });
-                const { clientSecret } = await paymentIntentResponse.json();
+                console.log("here 3");
+                const { clientSecret } = await paymentIntentResponse.json(); 
+                console.log("here 4");
 
                 if (! clientSecret ){
                     console.log("cleint secret came back null:", clientSecret);
                     return;
                 }
+                console.log("here 4");
                 setClientSecret(clientSecret);
 
 
@@ -90,9 +94,11 @@ function PaymentPage() {
                     clientSecret,
                     appearance,
                 });
-
+                console.log("here 5");
                 const stripe = await loadStripe(publishableKey);
                 setStripePromise(() => Promise.resolve(stripe));
+                console.log("here 6");
+
             } catch (error) {
                 console.log("Error fetching data:", error);
             }
