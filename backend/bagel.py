@@ -8,15 +8,24 @@ import yagmail
 from datetime import datetime, timedelta
 import schedule
 import time
+from flask_apscheduler import APScheduler
+
 
 from dotenv import load_dotenv
 load_dotenv()
-
 key = os.environ.get('STRIPE_API_KEY')
-
 stripe.api_key = key
 
 app = Flask( __name__ )
+
+scheduler = APScheduler()
+scheduler.api_enabled = True
+scheduler.init_app(app)
+scheduler.start()
+
+
+
+
 
 app.secret_key = os.getenv("SESSION_KEY") # for sessions
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bagel.db' 
@@ -154,8 +163,7 @@ def create_payment_intent():
         
         return return_dict
 
-    except stripe.error.StripeError as e:
-        return jsonify({"error" : { 'message' : str(e) }}), 400
+
     except Exception as e:
         return jsonify({"error" : { 'message' : str(e) }}), 500
 
@@ -277,9 +285,40 @@ def send_orders():
     email_orders(last_weeks_orders)
     return jsonify({"message": "Emails ordered"}), 201
 
+
+@scheduler.task("cron", id="do_send_orders_2", week="*", day_of_week="tue")
+def send_orders_2():
+
+    now = datetime.now()
+    last_monday = now - timedelta(days=6)
+
+    all_orders = Order.query.all()
+
+    last_weeks_orders = []
+    for order in all_orders:
+        # if the order is before now, <, and greater than/ after last monday
+
+        if ( order.date_ordered < now) and ( order.date_ordered > last_monday ):
+        # if True:
+            last_weeks_orders.append(order)
+
+    
+    email_orders(last_weeks_orders)
+    return jsonify({"message": "Emails ordered"}), 201
     
 
+# interval examples
+# @scheduler.task("interval", id="do_job_1", seconds=30, misfire_grace_time=900)
+# def job1():
+#     """Sample job 1."""
+#     print("Job 1 executed")
 
+
+# # cron examples
+# @scheduler.task("cron", id="do_job_2", minute="*")
+# def job2():
+#     """Sample job 2."""
+#     print("Job 2 executed")
 
     
 

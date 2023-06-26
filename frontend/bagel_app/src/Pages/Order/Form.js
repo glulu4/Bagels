@@ -325,7 +325,7 @@ function Form({ handleFormButtonSubmit, props } ) {
 
                 </form>
             </div>
-            <p className={styles.disclaimer}>DISCLAIMER: Bagels were baked in a <strong> <i>meat</i></strong> oven <br/> parve oven comimg soon</p>
+            <p className={styles.disclaimer}>DISCLAIMER: Bagels were baked in a <strong> <i>meat</i></strong> oven <br/> parve oven coming soon</p>
         </div>
 
          
