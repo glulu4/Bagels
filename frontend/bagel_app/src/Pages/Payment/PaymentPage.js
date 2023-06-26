@@ -33,7 +33,7 @@ function PaymentPage() {
     // "http://127.0.0.1:5001/config"
     const backendAddress = process.env.REACT_APP_BACKEND_URL;
 
-
+    console.log(process.env);
     console.log(backendAddress);
     
    
@@ -42,13 +42,7 @@ function PaymentPage() {
         const fetchData = async () => {
             try {
 
-                // let address = "http://127.0.0.1:5001"
 
-                // if (isMobile) {
-                //     address = "http://10.0.0.153:5001" // the nextwork one, for testing use 
-                //     console.log("on mobile");
-                //     console.log(address);
-                // }
 
 
                 const configResponse = await fetch(`${backendAddress}/config`);
