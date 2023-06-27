@@ -25,6 +25,7 @@ const timer = setInterval(() => {
   let timeUntilMonday = nextMonday - currDate; // gives time in milliseconds
 
   const backendAddress = process.env.REACT_APP_BACKEND_URL;
+  console.log("from index.js", backendAddress);
 
 
 
