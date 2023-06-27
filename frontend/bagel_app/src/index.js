@@ -44,7 +44,7 @@ const timer = setInterval(() => {
 // timeUntilMonday <= 1001 && timeUntilMonday >= 0
 
   // timeUntilMonday = 0
-  if (timeUntilMonday <= 1001 && timeUntilMonday >= 0) {
+  if (timeUntilMonday <= 2001 && timeUntilMonday >= 0) {
     // console.log("in here: ", timeUntilMonday);
 
     fetch(`${backendAddress}/send-orders`, {

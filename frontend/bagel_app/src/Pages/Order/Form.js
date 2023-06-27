@@ -19,6 +19,7 @@ function Form({ handleFormButtonSubmit, props } ) {
     const [numCinSug, setNumCinSug] = useState(props._numCinSug || 0);
     const [numBagels, setNumBagels] = useState(props._numBagels || 0);
     const [showError, setShowError] = useState(false)
+    const [errorMessage,setErrorMessage] = useState("")
     let [cost, setCost] = useState(0)
     const navigate = useNavigate()
 
@@ -96,11 +97,15 @@ function Form({ handleFormButtonSubmit, props } ) {
 
     useEffect( () => {
 
+
+
         if ((name && email && cost)) {
             setButtonColor(green);
         }
         else{
             setButtonColor(grey);
+
+
         }
     }, [name,email,cost])
 
@@ -113,6 +118,21 @@ function Form({ handleFormButtonSubmit, props } ) {
 
         if ( !(name && email && cost ) ){
             setShowError(true)
+            
+            if (!name && email && cost)
+                setErrorMessage("name")
+            else if (!name && !email && cost)
+                setErrorMessage("name and email")
+            else if (!name && !email && !cost)
+                setErrorMessage("name, email, and desired amount")
+            else if (name && !email && cost)
+                setErrorMessage("email")
+            else if (name && !email && !cost)
+                setErrorMessage("email and desired amount")
+            else if (name && email && !cost)
+                setErrorMessage("desired amount")
+            else if ( !name && email && !cost)
+                setErrorMessage("name and desired amount")
         }
 
         else{
@@ -300,7 +320,7 @@ function Form({ handleFormButtonSubmit, props } ) {
                         { showError && (
                             <>
                                 <p style={{ textAlign: 'center', fontWeight:'bold' }}>Please enter your</p>
-                                <p style={{ textAlign: 'center', paddingBottom: '5%', fontWeight: 'bold' }}>name, email, and desired amount</p>
+                                <p style={{ textAlign: 'center', paddingBottom: '5%', fontWeight: 'bold' }}>{errorMessage}</p>
                                 {/* {color: 'red'} */}
                             </>
                         )}

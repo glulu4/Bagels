@@ -8,19 +8,22 @@ import yagmail
 from datetime import datetime, timedelta
 import schedule
 import time
-from flask_apscheduler import APScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
+from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
 
 
 from dotenv import load_dotenv
+
 load_dotenv()
 key = os.environ.get('STRIPE_API_KEY')
 stripe.api_key = key
 
 app = Flask( __name__ )
 
-scheduler = APScheduler()
-scheduler.api_enabled = True
-scheduler.init_app(app)
+
+scheduler = BackgroundScheduler()
+
 scheduler.start()
 
 
@@ -286,9 +289,9 @@ def send_orders():
     return jsonify({"message": "Emails ordered"}), 201
 
 
-@scheduler.task("cron", id="do_send_orders_2", week="*", day_of_week="tue")
+@scheduler.scheduled_job('cron', id='send_orders_2', day_of_week='tue', hour=9, minute='15', timezone='EST')
 def send_orders_2():
-
+    task()
     now = datetime.now()
     last_monday = now - timedelta(days=6)
 
@@ -306,6 +309,10 @@ def send_orders_2():
     email_orders(last_weeks_orders)
     return jsonify({"message": "Emails ordered"}), 201
     
+
+# @scheduler.scheduled_job("interval", id="do_task", seconds=10)
+def task():
+    print("hi this is bullshit, wooo")
 
 # interval examples
 # @scheduler.task("interval", id="do_job_1", seconds=30, misfire_grace_time=900)
