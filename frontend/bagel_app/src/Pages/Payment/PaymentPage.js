@@ -33,8 +33,8 @@ function PaymentPage() {
     // "http://127.0.0.1:5001/config"
     const backendAddress = process.env.REACT_APP_BACKEND_URL;
 
-    console.log(process.env);
-    console.log(backendAddress);
+    // console.log(process.env);
+    // console.log(backendAddress);
     
    
 
@@ -50,12 +50,10 @@ function PaymentPage() {
 
                 // console.log("publishableKey",publishableKey);
 
-                console.log("here 1");
                 if (!publishableKey) {
                     console.log("publishable key is null");
                     return;
                 }
-                console.log("here 2");
                 // setPublishableKey(publishableKey);
 
                 const paymentIntentResponse = await fetch(`${backendAddress}/create-payment-intent/`, {
@@ -68,7 +66,6 @@ function PaymentPage() {
                         amount: cost,
                     })
                 });
-                console.log("here 3");
                 const { clientSecret } = await paymentIntentResponse.json(); 
                 console.log("here 4");
 
@@ -76,7 +73,6 @@ function PaymentPage() {
                     console.log("cleint secret came back null:", clientSecret);
                     return;
                 }
-                console.log("here 4");
                 setClientSecret(clientSecret);
 
 
@@ -90,7 +86,6 @@ function PaymentPage() {
                     clientSecret,
                     appearance,
                 });
-                console.log("here 5");
                 const stripe = await loadStripe(publishableKey);
                 setStripePromise(() => Promise.resolve(stripe));
                 console.log("here 6");

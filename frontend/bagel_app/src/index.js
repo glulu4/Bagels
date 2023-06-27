@@ -17,7 +17,7 @@ window.onload = () => {
 
 
 
-console.log("index.ks from", window.location);
+// console.log("index.ks from", window.location);
 const timer = setInterval(() => {
   let currDate = new Date();
   let daysUntilMonday = 1 + ((7 - currDate.getDay()) % 7);
@@ -25,7 +25,7 @@ const timer = setInterval(() => {
   let timeUntilMonday = nextMonday - currDate; // gives time in milliseconds
 
   const backendAddress = process.env.REACT_APP_BACKEND_URL;
-  console.log("from index.js", backendAddress);
+  // console.log("from index.js", backendAddress);
 
 
 
