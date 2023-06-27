@@ -8,9 +8,7 @@ import yagmail
 from datetime import datetime, timedelta
 import schedule
 import time
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.cron import CronTrigger
-from apscheduler.jobstores.sqlalchemy import SQLAlchemyJobStore
+
 
 
 from dotenv import load_dotenv
@@ -22,9 +20,7 @@ stripe.api_key = key
 app = Flask( __name__ )
 
 
-scheduler = BackgroundScheduler()
 
-scheduler.start()
 
 
 
@@ -289,43 +285,9 @@ def send_orders():
     return jsonify({"message": "Emails ordered"}), 201
 
 
-@scheduler.scheduled_job('cron', id='send_orders_2', day_of_week='tue', hour=9, minute='15', timezone='EST')
-def send_orders_2():
-    task()
-    now = datetime.now()
-    last_monday = now - timedelta(days=6)
-
-    all_orders = Order.query.all()
-
-    last_weeks_orders = []
-    for order in all_orders:
-        # if the order is before now, <, and greater than/ after last monday
-
-        if ( order.date_ordered < now) and ( order.date_ordered > last_monday ):
-        # if True:
-            last_weeks_orders.append(order)
-
-    
-    email_orders(last_weeks_orders)
-    return jsonify({"message": "Emails ordered"}), 201
     
 
-# @scheduler.scheduled_job("interval", id="do_task", seconds=10)
-def task():
-    print("hi this is bullshit, wooo")
 
-# interval examples
-# @scheduler.task("interval", id="do_job_1", seconds=30, misfire_grace_time=900)
-# def job1():
-#     """Sample job 1."""
-#     print("Job 1 executed")
-
-
-# # cron examples
-# @scheduler.task("cron", id="do_job_2", minute="*")
-# def job2():
-#     """Sample job 2."""
-#     print("Job 2 executed")
 
     
 

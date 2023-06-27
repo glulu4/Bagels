@@ -11,18 +11,20 @@ function Timer() {
     useEffect(() => {
         const timer = setInterval(() => {
             let currDate = new Date();
-            let daysUntilMonday = 1 + ((7 - currDate.getDay()) % 7);
+            let daysUntilMonday = (1 + (7 - currDate.getDay())) % 7; // (3 + (7 - currDate.getDay() ) ) % 7;
             let nextMonday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilMonday);
             let timeUntilMonday = nextMonday - currDate; // gives time in milliseconds
 
+            let days = Math.floor(timeUntilMonday / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeUntilMonday % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeUntilMonday % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeUntilMonday % (1000 * 60)) / 1000);
 
-            // let currDateT = new Date();
+
             // let daysUntilTuesday = (2 + (7 - currDate.getDay())) % 7;
             // let nextTuesday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilTuesday);
             // let timeUntilTuesday = nextTuesday - currDate; // gives time in milliseconds
 
-            // timeUntilTuesday -= 39600000
-            // // timeUntilTuesday -= 240000
 
             // let days = Math.floor(timeUntilTuesday / (1000 * 60 * 60 * 24));
             // let hours = Math.floor((timeUntilTuesday % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -30,10 +32,7 @@ function Timer() {
             // let seconds = Math.floor((timeUntilTuesday % (1000 * 60)) / 1000);
 
             
-            let days = Math.floor(timeUntilMonday / (1000 * 60 * 60 * 24));
-            let hours = Math.floor((timeUntilMonday % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            let minutes = Math.floor((timeUntilMonday % (1000 * 60 * 60)) / (1000 * 60));
-            let seconds = Math.floor((timeUntilMonday % (1000 * 60)) / 1000);
+
 
             setDayTime(days);
             setHourTime(hours);
