@@ -26,7 +26,7 @@ table{
 }
 
 .heading{
-    background-color: #c7c2c2;
+    background-color: #c7c2c2a4; /* added alpha hahahaha */
     margin:10px;
     width:fit-content;
     border-radius:10px;
