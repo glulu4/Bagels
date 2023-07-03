@@ -11,7 +11,7 @@ function Timer() {
     useEffect(() => {
         const timer = setInterval(() => {
             let currDate = new Date();
-            let daysUntilMonday = (1 + (7 - currDate.getDay())) % 7; // (3 + (7 - currDate.getDay() ) ) % 7;
+            let daysUntilMonday = 1 + (7 - currDate.getDay()) % 7; // (3 + (7 - currDate.getDay() ) ) % 7;
             let nextMonday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilMonday);
             let timeUntilMonday = nextMonday - currDate; // gives time in milliseconds
 
