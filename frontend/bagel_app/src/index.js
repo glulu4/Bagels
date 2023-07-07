@@ -28,34 +28,34 @@ const timer = setInterval(() => {
   let timeUntilTuesday = nextTuesday - currDate; // gives time in milliseconds
 
 
-  if (timeUntilTuesday <= 1200 && timeUntilTuesday >= 0) {
-    // console.log("in here: ", timeUntilMonday);
+  // if (timeUntilTuesday <= 1200 && timeUntilTuesday >= 0) {
+  //   // console.log("in here: ", timeUntilMonday);
 
-    fetch(`${backendAddress}/send-orders`, {
-      method: "post",
-      headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
-      body: JSON.stringify({}),
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        }
-        else {
-          throw new Error("Error: " + response.status);
-        }
-      })
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.log("We errored: ", error);
-      })
-  }
+  //   fetch(`${backendAddress}/send-orders`, {
+  //     method: "post",
+  //     headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
+  //     body: JSON.stringify({}),
+  //   })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json()
+  //       }
+  //       else {
+  //         throw new Error("Error: " + response.status);
+  //       }
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("We errored: ", error);
+  //     })
+  // }
 
 
 
   if (timeUntilMonday <= 1200 && timeUntilMonday >= 0) {
-    // console.log("in here: ", timeUntilMonday);
+    console.log("in here: ", timeUntilMonday);
 
     fetch(`${backendAddress}/send-orders`, {
       method: "post",
