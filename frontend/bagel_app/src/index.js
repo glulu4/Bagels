@@ -23,9 +23,9 @@ const timer = setInterval(() => {
 
 
 
-  let daysUntilTuesday = (2 + (7 - currDate.getDay())) % 7;
-  let nextTuesday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilTuesday);
-  let timeUntilTuesday = nextTuesday - currDate; // gives time in milliseconds
+  // let daysUntilTuesday = (2 + (7 - currDate.getDay())) % 7;
+  // let nextTuesday = new Date(currDate.getFullYear(), currDate.getMonth(), currDate.getDate() + daysUntilTuesday);
+  // let timeUntilTuesday = nextTuesday - currDate; // gives time in milliseconds
 
 
   // if (timeUntilTuesday <= 1200 && timeUntilTuesday >= 0) {
@@ -53,6 +53,7 @@ const timer = setInterval(() => {
   // }
 
 
+  console.log("timeUntilMonday: ", timeUntilMonday);
 
   if (timeUntilMonday <= 1200 && timeUntilMonday >= 0) {
     console.log("in here: ", timeUntilMonday);
