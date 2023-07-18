@@ -34,7 +34,7 @@ CORS(app, origins=["https://shmuelsmondaybagels.com",
 "https://shmuelsmondaybagels.com", 
 "https://www.shmuelsmondaybagels.com",
 "http://localhost:3000",
-"https://bagel-app-11c1ad484767.herokuapp.com",
+
 "https://localhost:3000", 
 "http://127.0.0.1:3000", 
 "http://10.0.0.153:3000", 
