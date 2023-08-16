@@ -3,9 +3,13 @@ import styles from './Timer.module.css';
 
 function Timer() {
 
+    // eslint-disable-next-line
     const [dayTime, setDayTime] = useState('time');
+    // eslint-disable-next-line
     const [hourTime, setHourTime] = useState('time');
+    // eslint-disable-next-line
     const [minTime, setMinTime] = useState('time');
+    // eslint-disable-next-line
     const [secTime, setSecTime] = useState('time');
 
     useEffect(() => {
