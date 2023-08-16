@@ -15,8 +15,12 @@ function Form({ handleFormButtonSubmit, props } ) {
     const [numPlain, setNumPlain] = useState(props._numPlain || 0);
     const [numSeseme, setNumSeseme] = useState(props._numSeseme || 0);
     const [numEv, setNumEv] = useState(props._numEv || 0);
+    // eslint-disable-next-line
     const [numPoppy, setNumPoppy] = useState(props._numPoppy || 0);
     const [numCinSug, setNumCinSug] = useState(props._numCinSug || 0);
+
+    const [numCreamBagels, setNumCreamBagels] = useState(props._numCreamBagels || 0); // set this
+
     const [numBagels, setNumBagels] = useState(props._numBagels || 0);
     const [showError, setShowError] = useState(false)
     const [errorMessage,setErrorMessage] = useState("")
@@ -61,6 +65,7 @@ function Form({ handleFormButtonSubmit, props } ) {
         let parsedNumEv = parseInt(numEv);
         let parsedNumPoppy = parseInt(numPoppy);
         let parsedNumCinSug = parseInt(numCinSug);
+        let parsedCreamBagels = parseInt(numCreamBagels)
 
         if (isNaN(parsedNumPlain))
             parsedNumPlain = 0;
@@ -77,14 +82,20 @@ function Form({ handleFormButtonSubmit, props } ) {
         if (isNaN(parsedNumCinSug))
             parsedNumCinSug = 0;
 
-        const numBagels = parsedNumPlain + parsedNumSeseme + parsedNumEv + parsedNumPoppy + parsedNumCinSug;
+        if (isNaN(parsedCreamBagels))
+            parsedCreamBagels = 0;
+
+        const numBagels = parsedNumPlain + parsedNumSeseme + parsedNumEv + parsedNumPoppy + parsedNumCinSug + parsedCreamBagels;
         setNumBagels(numBagels);
 
+        let numBagelsWithoutCCBagels = numBagels - parsedCreamBagels
 
-        let groupsOfThree = Math.floor(numBagels / 3);
-        let remainder = numBagels % 3;
 
-        let tempCost = (groupsOfThree * 5) + (remainder * 2);
+        let groupsOfThree = Math.floor(numBagelsWithoutCCBagels / 3);
+        let remainder = numBagelsWithoutCCBagels % 3;
+
+        let tempCost = (groupsOfThree * 5) + (remainder * 2) + (parsedCreamBagels * 3);
+
         if (isNaN(tempCost)) {
             setNumBagels(0)
         }
@@ -93,11 +104,9 @@ function Form({ handleFormButtonSubmit, props } ) {
 
 
 
-    }, [numPlain, numSeseme, numEv, numPoppy, numCinSug ]) 
+    }, [numPlain, numSeseme, numEv, numPoppy, numCinSug, numCreamBagels ]) 
 
     useEffect( () => {
-
-
 
         if ((name && email && cost)) {
             setButtonColor(green);
@@ -136,7 +145,7 @@ function Form({ handleFormButtonSubmit, props } ) {
         }
 
         else{
-            handleFormButtonSubmit(cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels);
+            handleFormButtonSubmit(cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numCreamBagels, numBagels);
             
 
         }
@@ -175,6 +184,7 @@ function Form({ handleFormButtonSubmit, props } ) {
                 _numEv: numEv,
                 _numPoppy: numPoppy,
                 _numCinSug: numCinSug,
+                _numCreamBagels: numCreamBagels,
                 _numBagels: numBagels
             }
         })
@@ -190,7 +200,7 @@ function Form({ handleFormButtonSubmit, props } ) {
         <div className={styles.orderPage}>
         
             <div className={styles.formcontainer} >
-                <form method="post">
+                <form method="post" className={styles.actualForm}>
                     <br />
                     <div>
                         <label htmlFor=''>Name</label>
@@ -225,7 +235,7 @@ function Form({ handleFormButtonSubmit, props } ) {
 
                     <div >
                         <label>Total: {numBagels} bagel's for ${cost}</label>
-                        <p>Bagels: 3 for $5 | 12 for $20 </p>
+                        <p>Bagels: 1 for $2 | 3 for $5 </p>
                         
                         <ul className={styles.bagelList}> 
 
@@ -278,7 +288,7 @@ function Form({ handleFormButtonSubmit, props } ) {
                                 </li>
                             </div>
 
-                            <div className={styles.divItems}>
+                            {/* <div className={styles.divItems}>
                                 <label>Poppy Seed</label>
                                 <li>
                                     <input
@@ -292,7 +302,7 @@ function Form({ handleFormButtonSubmit, props } ) {
                                         }}
                                     />
                                 </li>
-                            </div>
+                            </div> */}
                             <div className={styles.divItems}>
                                 <label>Cinnamon Sugar</label>
                                     <li>
@@ -308,6 +318,22 @@ function Form({ handleFormButtonSubmit, props } ) {
                                             }}
                                         />
                                     </li>
+                            </div>
+                            <div className={styles.divItems}>
+                                <label>Cream Cheese Bagel $3</label>
+                                <li>
+                                    <input
+                                        className={styles.inputNumberBox}
+                                        type='number'
+                                        min={0}
+                                        placeholder=""
+                                        value={numCreamBagels}
+                                        onChange={(event) => {
+                                            event.preventDefault();
+                                            setNumCreamBagels(event.target.value)
+                                        }}
+                                    />
+                                </li>
                             </div>
 
 

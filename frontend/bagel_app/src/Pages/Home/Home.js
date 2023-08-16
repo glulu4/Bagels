@@ -306,7 +306,7 @@ function Home(){
     }, [])
     const handleClick = () => {
         if (location.state) {
-            const { _cost, _name, _email, _numPlain, _numSeseme, _numEv, _numPoppy, _numCinSug, _numBagels } = location.state;
+            const { _cost, _name, _email, _numPlain, _numSeseme, _numEv, _numPoppy, _numCinSug, _numCreamBagels, _numBagels } = location.state;
             navigate('/order', {
                 state: {
                     _cost: _cost,
@@ -317,6 +317,7 @@ function Home(){
                     _numEv: _numEv,
                     _numPoppy: _numPoppy,
                     _numCinSug: _numCinSug,
+                    _numCreamBagels: _numCreamBagels,
                     _numBagels: _numBagels
                 }
             });
@@ -336,8 +337,9 @@ function Home(){
             <section className={styles.one}>
                 <div className={styles.container}>
                     <div className={styles.hero}>
-                        <h2 id='homePageh2'>Shmuel's Kosher Bagels</h2>
-                        <h3 className='homePage'>Locally baked in Pittsburgh by Sam Hanks</h3>
+                        <h2 id='homePageh2'>Shmuel's Bagels</h2>
+                        <h3 className='homePage'>Locally baked in Pittsburgh  <h3 style={{ fontSize: '45px' }}>kosher sourdough vegan</h3></h3>
+                       
 
 
                     </div>
@@ -346,7 +348,9 @@ function Home(){
 
             <section className={styles.two}>
                 <div className={styles.container}>
+    
                     <Timer></Timer>
+
                 </div>
             </section>
 

@@ -77,7 +77,7 @@ def get_all_orders():
 # this route needs to be different than my React /orders one, so i added a slash, was getting 500 error
 @app.route("/order/", methods=["POST"])
 def add_order():
-    # print("in add_order ##########################################################################")
+    print("in add_order ##########################################################################")
     order_info = request.get_json()
     
     name = order_info["name"]
@@ -90,27 +90,31 @@ def add_order():
     num_everything = order_info["num_everything"]
     num_poppy_seed = order_info["num_poppy_seed"]
     num_cin_sugar = order_info["num_cin_sugar"]
+    num_cream_bagels = order_info["num_cream_bagels"]
+
+
     order_cost = order_info["total_cost"] # name in js file is in " "
 
-    # print("name:", name)
-    # print("email:", email)
-    # print("_date:", _date)
-    # print("num_bagels:", num_bagels)
-    # print("num_plain:", num_plain)
-    # print("num_sesame:", num_sesame)
-    # print("num_everything:", num_everything)
-    # print("num_poppy_seed:", num_poppy_seed)
-    # print("num_cin_sugar:", num_cin_sugar)
-    # print("order_cost:", order_cost)
+    print("name:", name)
+    print("email:", email)
+    print("_date:", _date)
+    print("num_bagels:", num_bagels)
+    print("num_plain:", num_plain)
+    print("num_sesame:", num_sesame)
+    print("num_everything:", num_everything)
+    print("num_poppy_seed:", num_poppy_seed)
+    print("num_cin_sugar:", num_cin_sugar)
+    print("num_cream_bagels", num_cream_bagels)
+    print("order_cost:", order_cost)
 
    
     new_order = Order(name=name, email=email, date_ordered=_date, num_bagels=num_bagels, 
     num_plain=num_plain, num_sesame=num_sesame, num_everything=num_everything, 
-    num_poppy_seed=num_poppy_seed, num_cin_sugar=num_cin_sugar, order_cost=order_cost )
+    num_poppy_seed=num_poppy_seed, num_cin_sugar=num_cin_sugar, num_cream_bagels=num_cream_bagels, order_cost=order_cost )
 
     db.session.add(new_order)
     db.session.commit()
-    # print("Order processed")
+    print("Order processed")
     # send_orders()
     return make_response( jsonify(new_order.to_dict()), 201 )
 
@@ -216,6 +220,7 @@ def email_orders(last_weeks_orders):
     total_everything = 0
     total_poppy = 0
     total_cin_sugar = 0
+    total_cream_bagels = 0
     total_cost = 0
     with open("orders.txt", "w") as _file:
         _file.write("Good Morning Sam. Here are the Orders\n\n")
@@ -227,6 +232,7 @@ def email_orders(last_weeks_orders):
             total_everything += order.num_everything
             total_poppy += order.num_poppy_seed
             total_cin_sugar += order.num_cin_sugar
+            total_cream_bagels += order.num_cream_bagels
 
 
             _file.write( f" Name: {order.name}\n" )  
@@ -237,6 +243,7 @@ def email_orders(last_weeks_orders):
             _file.write( f" Everything: {order.num_everything}\n")
             _file.write( f" Poppy: {order.num_poppy_seed}\n")
             _file.write( f" Cinnamon Sugar: {order.num_cin_sugar}\n")
+            _file.write( f" Cream Cheese Bagel: {order.num_cream_bagels}\n")
             _file.write("________________________________________________________\n\n")
         
         _file.write(f"Total Bagels: {total_bagels}\n")
@@ -245,6 +252,7 @@ def email_orders(last_weeks_orders):
         _file.write(f"Total Everything: {total_everything}\n")
         _file.write(f"Total Poppy Seed: {total_poppy}\n")
         _file.write(f"Total Cinnamon Sugar: {total_cin_sugar}\n")
+        _file.write(f"Total Cinnamon Sugar: {total_cream_bagels}\n")
         _file.write(f"Revenue this week: ${total_cost}\n")
 
     

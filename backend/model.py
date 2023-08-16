@@ -17,6 +17,7 @@ class Order(db.Model):
     num_everything = db.Column ( db.Integer, nullable=True )
     num_poppy_seed = db.Column ( db.Integer, nullable=True )
     num_cin_sugar = db.Column ( db.Integer, nullable=True )
+    num_cream_bagels = db.Column ( db.Integer, nullable=True )
     order_cost = db.Column ( db.Integer, nullable=False)
 
 
@@ -25,7 +26,7 @@ class Order(db.Model):
     # bagel_type = db.Column( db.String(100), nullable=False )
     # num_dozen = db.Column ( db.Integer, nullable=False )
 
-    def __init__( self, name, email, date_ordered, num_bagels, num_plain, num_sesame, num_everything, num_poppy_seed, num_cin_sugar, order_cost ):
+    def __init__( self, name, email, date_ordered, num_bagels, num_plain, num_sesame, num_everything, num_poppy_seed, num_cin_sugar, num_cream_bagels, order_cost ):
         self.name = name
         self.email = email
         self.date_ordered = date_ordered
@@ -36,6 +37,7 @@ class Order(db.Model):
         self.num_everything = num_everything
         self.num_poppy_seed = num_poppy_seed
         self.num_cin_sugar = num_cin_sugar
+        self.num_cream_bagels = num_cream_bagels
         self.order_cost = order_cost
 
 
@@ -51,8 +53,8 @@ class Order(db.Model):
             "num_everything" : self.num_everything,
             "num_poppy_seed" : self.num_poppy_seed,
             "num_cin_sugar" : self.num_cin_sugar,
+            "num_cream_bagels" : self.num_cream_bagels,
             "order_cost" : self.order_cost,
         }
 
 
-    # name, number of bagels, 5 boxes come up 

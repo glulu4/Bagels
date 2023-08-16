@@ -6,13 +6,21 @@ import { useNavigate } from 'react-router-dom';
 // import { isMobile } from 'react-device-detect';
 
 
+/* 
+DISCLAIMER
+
+if you're going to test with a local database, change fetch request! :) 
+
+*/
+
+
 import './Payment.css'
 
 function Payment(props){
     // console.log(props.prop.clientSecret);
     // console.log(props )
     // const location = useLocation()
-    const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels } = props.state;
+    const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numCreamBagels, numBagels } = props.state;
     // console.log("cost: ", cost);
     // console.log("name: ", name);
     // console.log("email: ", email);
@@ -75,6 +83,7 @@ function Payment(props){
                     numEv: numEv,
                     numPoppy: numPoppy,
                     numCinSug: numCinSug,
+                    numCreamBagels: numCreamBagels,
                     numBagels: numBagels
                 }
             })
@@ -95,6 +104,7 @@ function Payment(props){
 
 
         fetch(`${backendAddress}/order/`, {
+        // fetch('http://127.0.0.1:5001/order/', {
             method: "post",
             // mode: 'no-cors',
             headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
@@ -107,6 +117,7 @@ function Payment(props){
                 "num_everything": numEv,
                 "num_poppy_seed": numPoppy,
                 "num_cin_sugar": numCinSug,
+                "num_cream_bagels": numCreamBagels,
                 "total_cost" : cost,
                 "payment_id": paymentID,
             })
@@ -189,6 +200,16 @@ function Payment(props){
                 receipt_email: email, // add email for reciepyt
             },
         });
+
+        // test this
+
+        // .then(function (result) {
+        //     if (result.error) {
+        //         console.log("errooooor", error);
+
+        //     }
+        // });
+        
 
 
 

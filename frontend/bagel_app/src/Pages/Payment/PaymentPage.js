@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 function PaymentPage() {
 
     const location = useLocation();
-    const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels } = location.state;
+    const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numCreamBagels, numBagels } = location.state;
 
     const state = {
             cost: cost,
@@ -19,6 +19,7 @@ function PaymentPage() {
             numEv: numEv,
             numPoppy: numPoppy,
             numCinSug: numCinSug,
+            numCreamBagels: numCreamBagels,
             numBagels: numBagels
     }
 
@@ -45,6 +46,7 @@ function PaymentPage() {
 
 
 
+
                 const configResponse = await fetch(`${backendAddress}/config`);
                 const { publishableKey } = await configResponse.json();
 
@@ -67,7 +69,6 @@ function PaymentPage() {
                     })
                 });
                 const { clientSecret } = await paymentIntentResponse.json(); 
-                console.log("here 4");
 
                 if (! clientSecret ){
                     console.log("cleint secret came back null:", clientSecret);

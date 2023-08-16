@@ -12,7 +12,7 @@ function ConfirmOrder(){
     }
     const location = useLocation();
     const navigate = useNavigate();
-    const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels } = location.state;
+    const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numCreamBagels, numBagels } = location.state;
 
 
 
@@ -27,6 +27,7 @@ function ConfirmOrder(){
                 numEv: numEv,
                 numPoppy: numPoppy,
                 numCinSug: numCinSug,
+                numCreamBagels: numCreamBagels,
                 numBagels: numBagels
             }
         });
@@ -43,6 +44,7 @@ function ConfirmOrder(){
                 _numEv: numEv,
                 _numPoppy: numPoppy,
                 _numCinSug: numCinSug,
+                _numCreamBagels: numCreamBagels,
                 _numBagels: numBagels
             }
         });
@@ -132,6 +134,11 @@ function ConfirmOrder(){
                 <tr className="item">
                     <td>Cinnamon Sugar Bagel</td>
                     <td className={styles.quantityCell} >{numCinSug}</td>
+                </tr>
+
+                <tr className="item">
+                    <td>Cream Cheese Bagel</td>
+                    <td className={styles.quantityCell} >{numCreamBagels}</td>
                 </tr>
                 
                 

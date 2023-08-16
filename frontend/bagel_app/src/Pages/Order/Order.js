@@ -31,7 +31,7 @@ function Order() {
 
 
 
-    const handleFormButtonSubmit = (cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numBagels) => {
+    const handleFormButtonSubmit = (cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numCreamBagels, numBagels) => {
         // Pass the variables as part of the state object while navigating to the target route
         navigate('/confirm-order', {
             state: {
@@ -43,6 +43,7 @@ function Order() {
                 numEv: numEv,
                 numPoppy: numPoppy,
                 numCinSug: numCinSug,
+                numCreamBagels: numCreamBagels,
                 numBagels: numBagels
             }
         });

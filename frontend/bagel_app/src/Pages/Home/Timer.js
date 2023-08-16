@@ -53,8 +53,19 @@ function Timer() {
     return (
         <section className={styles.timersection}>
             <div>
-                <h2 id={styles.timelabel}>Time until next bake</h2>
-                <div className={styles.countdown}>
+                {/* <h2 id={styles.timelabel}>Time until next bake</h2> */}
+                <div style={{
+                    display:'flex',
+                    flexDirection:'column',
+                    paddingRight:'10%'
+                }}>
+                    <h2 id={styles.timelabel}>Wednesday Noon @</h2>
+                    <h3 id={styles.timelabel}>The Cozy Corner Bookstore</h3>
+                    <h3 style={{fontWeight:'200'}} id={styles.timelabel}>5879 Ellsworth ave</h3>
+                </div>
+
+
+                {/* <div className={styles.countdown}>
                     <div className={styles.dayDiv}>
                         <h3 id="day-time">{dayTime}</h3>
                         <h3 className='labels'>Days</h3>
@@ -71,7 +82,7 @@ function Timer() {
                         <h3 id="sec-time">{secTime}</h3>
                         <h3 className='labels'>Seconds</h3>
                     </div>
-                </div>
+                </div> */}
             </div>
         </section>
 
