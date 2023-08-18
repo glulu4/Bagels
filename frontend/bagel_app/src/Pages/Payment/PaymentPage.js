@@ -96,7 +96,7 @@ function PaymentPage() {
         };
 
         fetchData();
-    },[] );
+    }, [backendAddress, cost] );
 
     if (!stripePromise) {
         return <div>Loading...</div>;
