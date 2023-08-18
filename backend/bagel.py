@@ -155,7 +155,7 @@ def create_payment_intent():
             amount=amount,
             currency=currency,
             # automatic_payment_methods={"enabled": True}, # it has to be thsi one or the one below
-            payment_method_types = ["card","link","cashapp"]
+            payment_method_types = ["card","link"]
             # payment_method= payment_method
         )
 
@@ -252,7 +252,7 @@ def email_orders(last_weeks_orders):
         _file.write(f"Total Everything: {total_everything}\n")
         _file.write(f"Total Poppy Seed: {total_poppy}\n")
         _file.write(f"Total Cinnamon Sugar: {total_cin_sugar}\n")
-        _file.write(f"Total Cinnamon Sugar: {total_cream_bagels}\n")
+        _file.write(f"Total Cream Cheese Bagels: {total_cream_bagels}\n")
         _file.write(f"Revenue this week: ${total_cost}\n")
 
     

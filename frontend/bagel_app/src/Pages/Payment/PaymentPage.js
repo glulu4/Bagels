@@ -89,7 +89,6 @@ function PaymentPage() {
                 });
                 const stripe = await loadStripe(publishableKey);
                 setStripePromise(() => Promise.resolve(stripe));
-                console.log("here 6");
 
             } catch (error) {
                 console.log("Error fetching data:", error);
@@ -97,7 +96,7 @@ function PaymentPage() {
         };
 
         fetchData();
-    }, );
+    },[] );
 
     if (!stripePromise) {
         return <div>Loading...</div>;

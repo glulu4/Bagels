@@ -124,12 +124,12 @@ function Payment(props){
         })
             // fetch resolves to
             .then((response) => {
-                console.log(response)
+                // console.log(response)
                 return response.json();
             })
             // needed because above then returns
             .then((result) => {
-                console.log(result);
+                // console.log(result);
             })
             .catch(() => {
                 console.log("Error posting new order");
@@ -142,11 +142,18 @@ function Payment(props){
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (!stripe || !elements) {
+            return;
+        }
+
+        setIsLoading(true);
         
 
         stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
             // console.log("pay intent",paymentIntent);
             setPaymentID(paymentIntent.id )
+            // console.log("payment status", paymentIntent.status);
             switch (paymentIntent.status) {
                 case "succeeded":
                     setMessage("Payment succeeded!");
@@ -166,21 +173,10 @@ function Payment(props){
         });
 
 
-        submitOrder(event);
 
 
 
 
-
-        
-        elements.submit()
-
-
-        if (!stripe || !elements) {
-            return;
-        }
-
-        setIsLoading(true);
 
         // const paymentElement = elements.getElement('payment');
         // console.log("payment element", paymentElement);
@@ -188,7 +184,15 @@ function Payment(props){
 
         // if im accessing it from mobile
 
+
+
+        elements.submit()
+
+
     
+
+
+        submitOrder(event);
 
         
         const { error } = await stripe.confirmPayment({
@@ -201,15 +205,15 @@ function Payment(props){
             },
         });
 
-        // test this
-
-        // .then(function (result) {
-        //     if (result.error) {
-        //         console.log("errooooor", error);
-
-        //     }
-        // });
         
+
+
+
+
+
+
+
+
 
 
 
@@ -219,6 +223,8 @@ function Payment(props){
         // your `return_url`. For some payment methods like iDEAL, your customer will
         // be redirected to an intermediate site first to authorize the payment, then
         // redirected to the `return_url`.
+
+
         if (error.type === "card_error" || error.type === "validation_error") {
             setMessage(error.message);
         } else {
@@ -231,11 +237,22 @@ function Payment(props){
 
 
 
+
     }
 
+
     const paymentElementOptions = {
-        layout: "tabs" // accordian or 
-    }
+        layout: "tabs", // accordion or 
+        business: {
+            name: "Sam's Bagels",
+            // other properties related to the business
+        }, 
+        wallets: {
+            applePay: 'auto',     // or 'never' to hide
+            googlePay: 'auto',     // or 'never' to hide
+            cashappPay: "never"
+        }
+    };
 
     return (
         <div className='outerDiv'>
