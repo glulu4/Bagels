@@ -14,25 +14,17 @@
 .formcontainer {
     display: flex;
     justify-content: center;
-    /* background-color: darksalmon; */
-    /* background-color: rgba(51, 51, 51, 0.05); */
-    /* background-color:#C38d9E; */
-    /* background-color: #e98074; */
+
     background-color:whitesmoke;
-    /* background-color: #ececec;     */
-    width: 30%;
+    width: auto;
+    padding: 1% 4% 1%;    
     font-style:bold;
     
-    /* Set a background color for the div */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    /* Adjust the margin-top to move it down */ 
-    /* margin: auto;  */
+
     border-radius: 10px; /* Add this line to round the corners */
     font-size:larger;
     font-style:bold;
-
-    /* padding-bottom:5%;
-    padding-top: 5%; */
 }
 
 .buttonContainer{

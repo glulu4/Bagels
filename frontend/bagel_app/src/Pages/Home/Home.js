@@ -338,7 +338,7 @@ function Home(){
                 <div className={styles.container}>
                     <div className={styles.hero}>
                         <h2 id='homePageh2'>Shmuel's Bagels</h2>
-                        <h3 className='homePage'>Locally baked in Pittsburgh  <h3 style={{ fontSize: isMobile ? '25px' : '45px', fontWeight:'400' }}>kosher sourdough vegan</h3></h3>
+                        <h3 className='homePage'>Locally baked in Pittsburgh  <h3 style={{ fontSize: isMobile ? '25px' : '40px', fontWeight:'400' }}>kosher sourdough vegan</h3></h3>
                        
 
 

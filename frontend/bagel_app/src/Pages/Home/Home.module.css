@@ -13,23 +13,17 @@ html {
 
 body {
     scroll-behavior: smooth;
-    /* background: #ffc0cb; maybe dark salmon */
-    /* background-color:rgb(47, 143, 175); */
-    /* background-color: skyblue; */
+
     background-color: #90ccf4;
-    /* background-color: skyblue; */
     position: relative;
-    /* overflow: hidden; */
     font-family: 'Poppins', sans-serif;
     overflow: auto;
     height: 100%;
-        margin: 0;
-        padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-/* body.loaded {
-    overflow: auto;
-} */
+
 
 .webgl {
     position: fixed;
@@ -67,7 +61,7 @@ section.two .container {
 }
 
 secttion.three {
-    width:40%;
+    width: 40%;
 }
 
 .hero {
@@ -98,7 +92,7 @@ h1 {
     justify-content: center;
 }
 
-h2{
+h2 {
     font-size: 60px;
     font-weight: 600;
     line-height: 70px;
@@ -137,38 +131,32 @@ p {
     transform-origin: top left;
 }
 
-/* .loading-bar.ended {
-    transform: scaleX(0);
-    transform-origin: 100% 0;
-    transition: transform 1.5s ease-in-out;
-} */
+
 
 .order-btn {
     text-decoration: none;
-    /* Removes the underline */
     color: black;
-    /* Uses the default text color */
 }
 
 .order-btn:hover {
     text-decoration: none;
-    /* Removes the underline on hover */
     color: white;
-    /* Uses the default text color on hover */
 }
 
 /* Add the following media query at the end of the CSS file */
 @media (max-width: 768px) {
 
-    #homePageh2{
-        display:flex;
-        justify-content:center;
-    }
-    .homePage{
+    #homePageh2 {
         display: flex;
         justify-content: center;
-        padding-left:5%;
     }
+
+    .homePage {
+        display: flex;
+        justify-content: center;
+        padding-left: 5%;
+    }
+
     h1 {
         font-size: 50px;
         line-height: 60px;
@@ -209,19 +197,16 @@ p {
     .container {
         padding: 0 10px;
     }
-        body {
-            scroll-behavior: smooth;
-            /* background: #ffc0cb; maybe dark salmon */
-            /* background-color:rgb(47, 143, 175); */
-            /* background-color: skyblue; */
-            background-color: #90ccf4;
-            /* background-color: skyblue; */
-            position: relative;
-            /* overflow: hidden; */
-            font-family: 'Poppins', sans-serif;
-            overflow: auto;
-            height: 100vh;
-            margin: 0;
-            padding: 0;
-        }
+
+    body {
+        scroll-behavior: smooth;
+
+        background-color: #90ccf4;
+        position: relative;
+        font-family: 'Poppins', sans-serif;
+        overflow: auto;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
 }
