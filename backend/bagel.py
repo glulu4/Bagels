@@ -15,8 +15,17 @@ from dotenv import load_dotenv
 
 load_dotenv()
 key = os.environ.get('STRIPE_API_KEY')
+
+# for testing, fake secret key
+# key = "sk_test_51NCkM8I8OaFVzBusPTnWgCmiXhgHrQRJ6oA3GnrTKOVRHcUm5exR7gDhgWtH1Ux42MCAOSGcdBWjb1OXHCZwJjrt00fpva6fhe"
+
+
 stripe.api_key = key
 
+#test webhook key
+# endpoint_secret = 'whsec_e2d862756ea3ea3d29d7a7d0dc8ebdf50e74cbe05ddcf7d12a0eec1e3123c725'
+
+endpoint_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
 app = Flask( __name__ )
 
 
@@ -27,6 +36,9 @@ app = Flask( __name__ )
 
 
 app.secret_key = os.getenv("SESSION_KEY") # for sessions
+
+
+
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///bagel.db' 
 db.init_app(app) # instead of passing 'app' to db = SQLAlchemy(app) in model.py
 
@@ -71,6 +83,17 @@ def get_all_orders():
     else:
         abort(404)
 
+@app.route("/clear/", methods=["DELETE"])
+def clear_db():
+    try:
+        db.drop_all()
+        db.create_all()
+        return make_response("Database cleared successfully", 200)
+
+    except Exception as e:
+        return make_response("Failed to clear database", 500)
+
+
 
 
 # Adds order to DB
@@ -79,6 +102,9 @@ def get_all_orders():
 def add_order():
     print("in add_order ##########################################################################")
     order_info = request.get_json()
+
+
+    print(order_info)
     
     name = order_info["name"]
     email = order_info["email"]
@@ -130,8 +156,9 @@ def delete_order(_id):
 @app.route("/config", methods=["GET"])
 def get_api_key():
     # api_key = {
-    #     "publishableKey" : 'pk_test_51NBJW4Ih7LOkeOi8v3t3IHufZD2TOIZm3GDA1py22lrZxGR3ALnAEFmBqXgtFasg5JQd8MTTvbkrtdPd5p73H88Y00KezH5ItL'
+    #     "publishableKey" : 'pk_test_51NCkM8I8OaFVzBus5uWViCKdMAWWwIYHQaJgffQpXWbnoft4q3ibSb4OhkFWOIetL1Ev4djpOhe47D1AVcpZEYEA00Gj8worcu'
     # }
+
     api_key = {
         "publishableKey" : 'pk_live_51NCkM8I8OaFVzBusmOLBipTXzwTwwExOcfrsGelxGVY3L8AkEeAvQ7AKiXcr9CH3uMrcbnsJXj5ewcTowYL5Uuz200kTG7OH9c'
     }
@@ -173,12 +200,15 @@ def create_payment_intent():
 
 
 
+
 @app.route('/webhook', methods=['POST'])
 def webhook_received():
     # You can use webhooks to receive information about asynchronous payment events.
     # For more about our webhook events check out https://stripe.com/docs/webhooks.
-    webhook_secret = os.getenv('STRIPE_WEBHOOK_SECRET')
     request_data = json.loads(request.data)
+
+    order_info = request.get_json()
+    webhook_secret = endpoint_secret
 
     if webhook_secret:
         # Retrieve the event by verifying the signature using the raw body and secret if webhook signing is configured.
@@ -192,17 +222,19 @@ def webhook_received():
         # Get the type of webhook event sent - used to check the status of PaymentIntents.
         event_type = event['type']
     else:
-        data = request_data['data']
         event_type = request_data['type']
-        # data_object = data['object']
+
 
     # there are a bunch of payment_intent.<somethings> ( processing, cancelled, ect )
     if event_type == 'payment_intent.succeeded':
         print('💰 Payment received!')
+
         # Fulfill any orders, e-mail receipts, etc
         # To cancel the payment you will need to issue a Refund (https://stripe.com/docs/api/refunds)
     elif event_type == 'payment_intent.payment_failed':
         print('❌ Payment failed.')
+
+
     return jsonify({'status': 'success'})
  
 
@@ -268,6 +300,13 @@ def email_orders(last_weeks_orders):
             attachments=document,
         )
 
+        yag.send(
+            to='samuelthomashanks@gmail.com', 
+            subject="Bagel orders", 
+            contents=body,
+            attachments=document,
+        )
+
         print("Email sent successfully")
     except BaseException as e:
         print("Email not sent: ", e)
@@ -291,6 +330,20 @@ def send_orders():
     
     email_orders(last_weeks_orders)
     return jsonify({"message": "Emails ordered"}), 201
+
+
+
+@app.route('/send-all-orders', methods=['POST'])
+def send_all_orders():
+
+
+    all_orders = Order.query.all()
+
+
+
+    
+    email_orders(all_orders)
+    return jsonify({"message": "All emails ordered"}), 201
 
 
     

@@ -126,10 +126,11 @@ function ConfirmOrder(){
                     <td className={styles.quantityCell} >{numEv}</td>
                 </tr>
 
-                <tr className="item">
+                {/* <tr className="item">
                     <td>Poppy Seed Bagel</td>
                     <td className={styles.quantityCell} >{numPoppy}</td>
-                </tr>
+                </tr> */}
+                
 
                 <tr className="item">
                     <td>Cinnamon Sugar Bagel</td>

@@ -1,9 +1,32 @@
 Good Morning Sam. Here are the Orders
 
-Total Bagels: 0
-Total Plain: 0
-Total Seseme: 0
-Total Everything: 0
+ Name: Sharon Lulu
+ Date: 2023-09-03 17:05:23.180243
+ Order Amount: $32
+ Plain: 1
+ Seseme: 2
+ Everything: 3
+ Poppy: 0
+ Cinnamon Sugar: 4
+ Cream Cheese Bagel: 5
+________________________________________________________
+
+ Name: Sharon Lulu
+ Date: 2023-09-03 17:06:22.955054
+ Order Amount: $32
+ Plain: 1
+ Seseme: 2
+ Everything: 3
+ Poppy: 0
+ Cinnamon Sugar: 4
+ Cream Cheese Bagel: 5
+________________________________________________________
+
+Total Bagels: 30
+Total Plain: 2
+Total Seseme: 4
+Total Everything: 6
 Total Poppy Seed: 0
-Total Cinnamon Sugar: 0
-Revenue this week: $0
+Total Cinnamon Sugar: 8
+Total Cream Cheese Bagels: 10
+Revenue this week: $64

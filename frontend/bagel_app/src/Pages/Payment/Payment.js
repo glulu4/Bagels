@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 
 import { useElements, useStripe, PaymentElement } from "@stripe/react-stripe-js";
 // import { Elements } from "@stripe/react-stripe-js";
-import { useNavigate } from 'react-router-dom';
 // import { isMobile } from 'react-device-detect';
-
+import { useNavigate } from 'react-router-dom';
 
 /* 
 DISCLAIMER
@@ -21,6 +20,19 @@ function Payment(props){
     // console.log(props )
     // const location = useLocation()
     const { cost, name, email, numPlain, numSeseme, numEv, numPoppy, numCinSug, numCreamBagels, numBagels } = props.state;
+
+    const orderState = {
+        cost: cost,
+        name: name,
+        email: email,
+        numPlain: numPlain,
+        numSeseme: numSeseme,
+        numEv: numEv,
+        numPoppy: numPoppy,
+        numCinSug: numCinSug,
+        numCreamBagels: numCreamBagels,
+        numBagels: numBagels
+    }
     // console.log("cost: ", cost);
     // console.log("name: ", name);
     // console.log("email: ", email);
@@ -41,6 +53,7 @@ function Payment(props){
     const clientSecret = props.prop.clientSecret
     // console.log(clientSecret);
     const [message, setMessage] = useState(null);
+    // eslint-disable-next-line
     const [isLoading, setIsLoading] = useState(false);
     const [paymentID, setPaymentID] = useState(null);
 
@@ -94,19 +107,9 @@ function Payment(props){
         event.preventDefault();
 
 
-        // let address = "http://127.0.0.1:5001"
-
-        // if (isMobile) {
-        //     address = "http://10.0.0.153:5001" // the nextwork one, for testing use 
-        //     console.log("on mobile");
-        //     console.log(address);
-        // }
-
-
         fetch(`${backendAddress}/order/`, {
         // fetch('http://127.0.0.1:5001/order/', {
             method: "post",
-            // mode: 'no-cors',
             headers: { "Content-Type": "application/json; charset=UTF-8" }, //"Content-Type: application/json"
             body: JSON.stringify({
                 'name': name,
@@ -129,7 +132,7 @@ function Payment(props){
             })
             // needed because above then returns
             .then((result) => {
-                // console.log(result);
+                console.log(result);
             })
             .catch(() => {
                 console.log("Error posting new order");
@@ -144,6 +147,8 @@ function Payment(props){
         event.preventDefault();
 
         if (!stripe || !elements) {
+            // Stripe.js has not yet loaded.
+            // Make sure to disable form submission until Stripe.js has loaded.
             return;
         }
 
@@ -151,9 +156,10 @@ function Payment(props){
         
 
         stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
+            
             // console.log("pay intent",paymentIntent);
             setPaymentID(paymentIntent.id )
-            // console.log("payment status", paymentIntent.status);
+
             switch (paymentIntent.status) {
                 case "succeeded":
                     setMessage("Payment succeeded!");
@@ -163,14 +169,59 @@ function Payment(props){
                     break;
                 case "requires_payment_method":
                     setMessage("Your payment was not successful, please try again.");
-                    break;
+                    return;
                 default:
                     setMessage("Something went wrong...");
-                    break;
+                    return;
+            }
+        });
+
+
+
+
+
+
+        elements.submit();
+
+        
+
+
+
+            const {error} = await stripe.confirmPayment({
+                clientSecret,
+                elements,
+                confirmParams: {
+                    // return_url: `${address}/success`,
+                    // return_url: navigate('/success', {state: orderState} ),
+                    // redirect: 'if_required',
+                    receipt_email: email, // add email for reciepyt
+                },
+                redirect: 'if_required'
+            });
+
+            // console.log("confirm payment error", error);
+
+            if (!error) {
+                console.log("submitting order");
+                setMessage("Payment is GOING thru");
+                submitOrder(event);
+                navigate('/success', { state: orderState })
+            }
+            else{
+
+                if (error.type === "card_error" || error.type === "validation_error") {
+                    setMessage(error.message);
+                    return;
+                } else {
+                    console.log("The error", error);
+                    setMessage("An unexpected error occurred.");
+                }
+                setIsLoading(false);
+                return;
+
+
             }
 
-            // console.log(paymentIntent);
-        });
 
 
 
@@ -178,63 +229,25 @@ function Payment(props){
 
 
 
-        // const paymentElement = elements.getElement('payment');
-        // console.log("payment element", paymentElement);
-
-
-        // if im accessing it from mobile
 
 
 
-        elements.submit()
 
 
-    
 
+            // This point will only be reached if there is an immediate error when
+            // confirming the payment. Otherwise, your customer will be redirected to
+            // your `return_url`. For some payment methods like iDEAL, your customer will
+            // be redirected to an intermediate site first to authorize the payment, then
+            // redirected to the `return_url`.
 
-        submitOrder(event);
-
-        
-        const { error } = await stripe.confirmPayment({
-            clientSecret,
-            elements,
-            confirmParams: {
-                // return_url: `${address}/success`,
-                return_url: `${window.location.origin}/success`,
-                receipt_email: email, // add email for reciepyt
-            },
-        });
 
         
 
 
-
-
-
-
-
-
-
-
-
-
-        // This point will only be reached if there is an immediate error when
-        // confirming the payment. Otherwise, your customer will be redirected to
-        // your `return_url`. For some payment methods like iDEAL, your customer will
-        // be redirected to an intermediate site first to authorize the payment, then
-        // redirected to the `return_url`.
-
-
-        if (error.type === "card_error" || error.type === "validation_error") {
-            setMessage(error.message);
-        } else {
-            console.log(error);
-            setMessage("An unexpected error occurred.");
-        }
-
-        setIsLoading(false);
-
-
+        
+        
+        
 
 
 
@@ -265,11 +278,9 @@ function Payment(props){
                     
                     <br />
 
-                    <div style={{
-                        display: "flex",
-                        justifyContent: "center"}}
-                        >
-                        <button style={ProceedButtonStyle} id="button" type="submit" value="Submit" disabled={isLoading || !stripe || !elements}>Pay ${cost}</button>
+                    <div style={{display: "flex",justifyContent: "center"}}>
+                        <button style={ProceedButtonStyle} id="button" type="submit" value="Submit" >Pay ${cost}</button>
+                        {/* {disabled = { isLoading || !stripe || !elements}} */}
                     </div>
 
                     <br />

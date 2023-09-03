@@ -34,6 +34,9 @@ function PaymentPage() {
     // "http://127.0.0.1:5001/config"
     const backendAddress = process.env.REACT_APP_BACKEND_URL;
 
+    // const backendAddress = "http://127.0.0.1:5001";
+
+
     // console.log(process.env);
     // console.log(backendAddress);
     
@@ -66,12 +69,19 @@ function PaymentPage() {
                         // payment_method: "card",
                         currency: "usd",
                         amount: cost,
+                        metadata: {
+                            custom_key: 'custom_value',
+                            other_key: 'other_value'
+                        }
                     })
                 });
+
+                // console.log("made it here");
                 const { clientSecret } = await paymentIntentResponse.json(); 
+                // console.log( "clientSecret: ", clientSecret);
 
                 if (! clientSecret ){
-                    console.log("cleint secret came back null:", clientSecret);
+                    // console.log("cleint secret came back null:", clientSecret);
                     return;
                 }
                 setClientSecret(clientSecret);
