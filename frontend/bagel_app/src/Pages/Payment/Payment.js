@@ -60,6 +60,8 @@ function Payment(props){
     const backendAddress = process.env.REACT_APP_BACKEND_URL;
 
 
+
+
     const blue = '#5da2da' // blue
     const green = '#87C38F'
 
