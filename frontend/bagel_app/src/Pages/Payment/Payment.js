@@ -59,6 +59,8 @@ function Payment(props){
 
     const backendAddress = process.env.REACT_APP_BACKEND_URL;
 
+    console.log(backendAddress);
+
 
 
 
